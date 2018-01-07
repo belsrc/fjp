@@ -1,0 +1,17 @@
+{
+  "name": "fjp",
+  "version": "0.1.0",
+  "description": "My functional javascript playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "prettier --write --print-width 120 --single-quote --trailing-comma es5 \"**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"**/*.js\""
+  },
+  "author": "bryan@bryanckizer.com",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "4.15.0",
+    "mocha": "4.1.0",
+    "prettier": "1.9.2"
+  }
+}
