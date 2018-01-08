@@ -7,6 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "prettier --write --print-width 120 --single-quote --trailing-comma es5 \"**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"**/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belsrc/fjp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/belsrc/fjp/issues"
+  },
   "author": "bryan@bryanckizer.com",
   "license": "MIT",
   "devDependencies": {
