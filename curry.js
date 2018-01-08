@@ -9,8 +9,9 @@
 //
 // curry(Math.min, 3)(10)(50)(2);
 // >> 2
-// 
-const curry = (fn, arity = fn.length, ...args) =>
-  arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
+//
+function curry(fn, arity = fn.length, ...args) {
+  return arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
+}
 
 module.exports = curry;

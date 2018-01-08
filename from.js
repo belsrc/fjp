@@ -6,8 +6,8 @@ const map = require('./map');
 const select = require('./select');
 const sort = require('./sort');
 
-module.exports = chain = (arr) => {
-  _array = arr || [];
+module.exports = arr => {
+  let _array = arr || [];
 
   return {
     where(func) {
@@ -36,6 +36,6 @@ module.exports = chain = (arr) => {
 
     value() {
       return clone(_array);
-    }
+    },
   };
 };

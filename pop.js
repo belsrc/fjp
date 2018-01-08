@@ -15,10 +15,10 @@ const clone = require('./util/clone');
 // pop();
 // >> []
 //
-module.exports = pop = arr => {
+module.exports = arr => {
   if(!isArray(arr) || !arr.length) {
     return [];
   }
 
   return clone(arr).slice(0, arr.length - 1);
-}
+};

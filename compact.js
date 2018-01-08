@@ -8,7 +8,4 @@ const isArray = require('./util/isArray');
 // compact(null)
 // >> []
 //
-module.exports = compact = arr =>
-  isArray(arr) ?
-    arr.filter(Boolean) :
-    [];
+module.exports = arr => isArray(arr) ? arr.filter(Boolean) : [];

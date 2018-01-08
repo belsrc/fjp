@@ -1,3 +1,1 @@
-
-module.exports = isString = value =>
-  Array.isArray(value);
+module.exports = value => Array.isArray(value);

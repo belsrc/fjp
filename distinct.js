@@ -10,9 +10,5 @@ const isArray = require('./util/isArray');
 // distinct([{num: 1}, {num: 2}, {num: 2}, {num: 3}, {num: 4}, {num: 4}, {num: 5}], x => x.num);
 // >> [1, 2, 3, 4, 5]
 //
-module.exports = distinct = (arr, func) =>
-  isArray(arr) ?
-    isFunction(func) ?
-      [...new Set(arr.map(func))] :
-      [...new Set(arr)] :
-    [];
+module.exports = (arr, func) =>
+  isArray(arr) ? isFunction(func) ? [...new Set(arr.map(func))] : [...new Set(arr)] : [];

@@ -15,7 +15,7 @@
     "amd": true
   },
   "rules": {
-    "array-bracket-newline": [1,{"minItems": 2}],
+    "array-bracket-newline": [1,{"minItems": 3}],
     "array-bracket-spacing": [1,"always",{"singleValue":false,"objectsInArrays":true,"arraysInArrays":true}],
     "arrow-body-style": [1, "as-needed"],
     "arrow-parens": [1,"as-needed"],

@@ -3,12 +3,14 @@
 //
 // shuffle([1, 2, 3]);
 // >> [2,3,1]
-// 
-module.exports = shuffle = ([...arr]) => {
+//
+module.exports = ([...arr]) => {
   let m = arr.length;
-  while (m) {
+
+  while(m) {
     const i = Math.floor(Math.random() * m--);
-    [arr[m], arr[i]] = [arr[i], arr[m]];
+
+    [ arr[m], arr[i] ] = [ arr[i], arr[m] ];
   }
   return arr;
 };

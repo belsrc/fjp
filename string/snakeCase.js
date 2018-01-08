@@ -17,9 +17,10 @@ const isString = require('./../util/isString');
 // snakeCase('functional-javascript');
 // >> functional_javascript
 //
-module.exports = snakeCase = str =>
+module.exports = str =>
   isString(str) ?
-    str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    str
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
       .map(x => x.toLowerCase())
       .join('_') :
     '';

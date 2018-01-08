@@ -15,11 +15,10 @@ const isArray = require('./util/isArray');
 // groupBy(Math.floor, null);
 // >> {}
 //
-module.exports = groupBy = (func, arr) =>
+module.exports = (func, arr) =>
   func != null && isArray(arr) ?
-    arr.map(isFunction(func) ? func : val => val[func])
-      .reduce((acc, val, i) => {
-        acc[val] = (acc[val] || []).concat(arr[i]);
-        return acc;
-      }, {}) :
+    arr.map(isFunction(func) ? func : val => val[func]).reduce((acc, val, i) => {
+      acc[val] = (acc[val] || []).concat(arr[i]);
+      return acc;
+    }, {}) :
     {};

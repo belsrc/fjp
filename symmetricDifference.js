@@ -4,9 +4,10 @@ const isArray = require('./util/isArray');
 //
 // symmetricDifference([1, 2, 3], [1, 2, 4]);
 // >> [3,4]
-// 
-module.exports = symmetricDifference = (a, b) => {
+//
+module.exports = (a, b) => {
   const sA = isArray(a) ? new Set(a) : new Set();
   const sB = isArray(b) ? new Set(b) : new Set();
-  return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];
+
+  return [ ...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x)) ];
 };

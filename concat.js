@@ -12,12 +12,12 @@ const isArray = require('./util/isArray');
 // concat([]);
 // >> []
 //
-module.exports = concat = (...args) => {
+module.exports = (...args) => {
   if(!args.length) {
     return '';
   }
 
   return args.reduce((acc, cur) => isArray(cur) && acc, true) ?
-    args.reduce((acc, val) => [...acc, ...val], []) :
+    args.reduce((acc, val) => [ ...acc, ...val ], []) :
     args.join('');
 };

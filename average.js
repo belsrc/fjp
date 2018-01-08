@@ -9,11 +9,7 @@ const sum = require('./sum');
 // average(1, 2, 3);
 // >> 2
 //
-//average();
+// average();
 // >> 0
 //
-module.exports = average = (...nums) =>
-  // nums != null && nums.length
-  isArray(nums) && nums.length
-    ? sum(...nums) / [].concat(...nums).length
-    : 0;
+module.exports = (...nums) => isArray(nums) && nums.length ? sum(...nums) / [].concat(...nums).length : 0;

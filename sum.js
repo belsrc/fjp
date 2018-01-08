@@ -7,8 +7,5 @@ const isArray = require('./util/isArray');
 //
 // sum(1, 2, 3, 4);
 // >> 10
-// 
-module.exports = sum = (...nums) =>
-  isArray(nums) ?
-    [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) :
-    0;
+//
+module.exports = (...nums) => isArray(nums) ? [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) : 0;

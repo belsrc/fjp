@@ -17,12 +17,13 @@ const isString = require('./../util/isString');
 // camelCase('functional-javascript');
 // >> functionalJavascript
 //
-module.exports = camelCase = str => {
+module.exports = str => {
   if(!isString(str)) {
     return '';
   }
 
-  let s = str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+  const s = str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
     .join('');
 

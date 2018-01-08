@@ -7,5 +7,4 @@ const clone = require('./util/clone');
 // unshift(0)
 // >> [0]
 //
-module.exports = unshift = (val, arr) =>
-  isArray(arr) ? [val, ...(clone(arr))] : [val];
+module.exports = (val, arr) => isArray(arr) ? [ val, ...clone(arr) ] : [val];

@@ -4,6 +4,5 @@ const isArray = require('./util/isArray');
 //
 // union([1, 2, 3], [4, 3, 2]);
 // >> [1,2,3,4]
-// 
-module.exports = union = (a, b) =>
-  Array.from(new Set([...(isArray(a) ? a : []), ...(isArray(b) ? b : [])]));
+//
+module.exports = (a, b) => Array.from(new Set([ ...isArray(a) ? a : [], ...isArray(b) ? b : [] ]));

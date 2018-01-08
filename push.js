@@ -6,6 +6,5 @@ const clone = require('./util/clone');
 //
 // push(5)
 // >> [5]
-// 
-module.exports = push = (val, arr) =>
-  isArray(arr) ? [...(clone(arr)), val] : [val];
+//
+module.exports = (val, arr) => isArray(arr) ? [ ...clone(arr), val ] : [val];

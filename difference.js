@@ -20,7 +20,8 @@ const isArray = require('./util/isArray');
 // difference(null, null)
 // >> []
 //
-module.exports = difference = (a, b) => {
+module.exports = (a, b) => {
   const s = isArray(b) ? new Set(b) : new Set();
+
   return isArray(a) ? a.filter(x => !s.has(x)) : [...s];
 };

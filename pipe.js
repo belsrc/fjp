@@ -7,5 +7,5 @@
 // multiplyAndAdd5(5, 2);
 //
 // >> 15
-// 
-module.exports = pipe = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+//
+module.exports = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
