@@ -1,6 +1,6 @@
 // Selects the key-value pairs corresponding to the given keys from an object.
 //
-// select({ a: 1, b: '2', c: { d: 3 } }, ['a', 'c.d']);
+// select({ a: 1, b: '2', c: { d: 3 } }, [ 'a', 'c.d' ]);
 // >> { a: 1, d: 3 }
 //
 function select(obj, arr) {

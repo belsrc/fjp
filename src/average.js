@@ -3,7 +3,7 @@ const sum = require('./sum');
 
 // Returns the average of two or more numbers or an array of numbers.
 //
-// average([1, 2, 3]);
+// average([ 1, 2, 3 ]);
 // >> 2
 //
 // average(1, 2, 3);

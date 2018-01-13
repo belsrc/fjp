@@ -3,7 +3,7 @@ const isArray = require('./util/isArray');
 // concat('hello', ' ', 'world', ' foo', ' bar');
 // >> hello world foo bar
 //
-// concat(['foo', 'bar'], ['hello', 'world']);
+// concat([ 'foo', 'bar' ], [ 'hello', 'world' ]);
 // >> [ 'foo', 'bar', 'hello', 'world' ]
 //
 // concat();
