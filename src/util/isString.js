@@ -1,1 +1,1 @@
-module.exports = value => typeof value === 'string' || value instanceof String;
+export default value => typeof value === 'string' || value instanceof String;

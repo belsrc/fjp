@@ -1,11 +1,8 @@
-const isFunction = require('./util/isFunction');
-const isArray = require('./util/isArray');
-const clone = require('./util/clone');
+import isFunction from './util/isFunction';
+import isArray from './util/isArray';
+import clone from './util/clone';
 
-module.exports = (func, arr) => {
-  if(!isFunction(func)) {
-    return isArray(arr) ? clone(arr) : [];
-  }
-
-  return isArray(arr) ? arr.filter(func) : [];
-};
+export default (func, arr) =>
+  !isFunction(func) ?
+    isArray(arr) ? clone(arr) : [] :
+    isArray(arr) ? arr.filter(func) : [];

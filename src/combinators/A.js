@@ -1,2 +1,2 @@
 // Also called Apply/Call
-module.exports = f => x => f(x);
+export default f => x => f(x);

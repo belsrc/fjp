@@ -7,4 +7,4 @@
 //
 // >> 15
 //
-module.exports = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
+export default (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));

@@ -1,4 +1,4 @@
-const isFunction = require('./util/isFunction');
-const isArray = require('./util/isArray');
+import isFunction from './util/isFunction';
+import isArray from './util/isArray';
 
-module.exports = (func, arr) => isArray(arr) && isFunction(func) ? arr.every(func) : false;
+export default (func, arr) => isArray(arr) && isFunction(func) ? arr.every(func) : false;

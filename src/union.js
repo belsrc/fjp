@@ -1,8 +1,8 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // Returns every element that exists in any of the two arrays once.
 //
 // union([ 1, 2, 3 ], [ 4, 3, 2 ]);
 // >> [ 1, 2, 3, 4 ]
 //
-module.exports = (a, b) => Array.from(new Set([ ...isArray(a) ? a : [], ...isArray(b) ? b : [] ]));
+export default (a, b) => Array.from(new Set([ ...isArray(a) ? a : [], ...isArray(b) ? b : [] ]));

@@ -1,1 +1,1 @@
-module.exports = x => !x;
+export default x => !x;

@@ -1,5 +1,5 @@
-const isArray = require('./util/isArray');
-const clone = require('./util/clone');
+import isArray from './util/isArray';
+import clone from './util/clone';
 
 // May be slightly unconventional but given you can only return one value
 // which of the two things that pop does is more important?
@@ -15,10 +15,4 @@ const clone = require('./util/clone');
 // shift();
 // >> []
 //
-module.exports = arr => {
-  if(!isArray(arr) || !arr.length) {
-    return [];
-  }
-
-  return clone(arr).slice(1);
-};
+export default arr => !isArray(arr) || !arr.length ? [] : clone(arr).slice(1);

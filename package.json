@@ -4,8 +4,8 @@
   "description": "My functional javascript playground",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "prettier --write --print-width 120 --single-quote --trailing-comma es5 \"**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"**/*.js\""
+    "test": "ava --verbose",
+    "clean": "prettier --write --print-width 120 --single-quote --trailing-comma es5 \"{src,test}/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"{src,test}/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,14 @@
   "author": "bryan@bryanckizer.com",
   "license": "MIT",
   "devDependencies": {
+    "ava": "0.24.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-register": "6.26.0",
     "eslint": "4.15.0",
-    "mocha": "4.1.0",
-    "prettier": "1.9.2"
+    "prettier": "1.9.2",
+    "rollup": "0.54.1",
+    "rollup-plugin-babel": "3.0.3"
   }
 }

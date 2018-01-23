@@ -1,8 +1,8 @@
-const curry = require('./curry');
+import curry from './curry';
 
 const tap = curry((x, y) => {
   x(y);
   return y;
 });
 
-module.exports = tap;
+export default tap;

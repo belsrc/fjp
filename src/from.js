@@ -1,12 +1,12 @@
-const clone = require('./util/clone');
-const distinct = require('./distinct');
-const filter = require('./filter');
-const groupBy = require('./groupBy');
-const map = require('./map');
-const select = require('./select');
-const sort = require('./sort');
+import clone from './util/clone';
+import distinct from './distinct';
+import filter from './filter';
+import groupBy from './groupBy';
+import map from './map';
+import select from './select';
+import sort from './sort';
 
-module.exports = arr => {
+export default arr => {
   let _array = arr || [];
 
   return {

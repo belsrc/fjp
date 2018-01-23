@@ -1,4 +1,4 @@
-const isString = require('./../util/isString');
+import isString from './../util/isString';
 
 // Converts a string to camelCase.
 //
@@ -17,7 +17,7 @@ const isString = require('./../util/isString');
 // camelCase('functional-javascript');
 // >> functionalJavascript
 //
-module.exports = str => {
+export default str => {
   if(!isString(str)) {
     return '';
   }

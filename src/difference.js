@@ -1,4 +1,4 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // Returns the difference between two arrays.
 //
@@ -20,7 +20,7 @@ const isArray = require('./util/isArray');
 // difference(null, null)
 // >> []
 //
-module.exports = (a, b) => {
+export default (a, b) => {
   const s = isArray(b) ? new Set(b) : new Set();
 
   return isArray(a) ? a.filter(x => !s.has(x)) : [...s];

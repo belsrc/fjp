@@ -1,11 +1,11 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // Returns the symmetric difference between two arrays.
 //
 // symmetricDifference([ 1, 2, 3 ], [ 1, 2, 4 ]);
 // >> [ 3, 4 ]
 //
-module.exports = (a, b) => {
+export default (a, b) => {
   const sA = isArray(a) ? new Set(a) : new Set();
   const sB = isArray(b) ? new Set(b) : new Set();
 

@@ -1,4 +1,4 @@
-const isString = require('./../util/isString');
+import isString from './../util/isString';
 
 // Converts a string to title case.
 //
@@ -20,7 +20,7 @@ const isString = require('./../util/isString');
 // titleCase('the_old_man_and_the_sea');
 // >> The Old Man and the Sea
 //
-module.exports = str => {
+export default str => {
   const lower = [
     'and',
     'or',

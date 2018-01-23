@@ -1,4 +1,4 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // concat('hello', ' ', 'world', ' foo', ' bar');
 // >> hello world foo bar
@@ -12,12 +12,9 @@ const isArray = require('./util/isArray');
 // concat([]);
 // >> []
 //
-module.exports = (...args) => {
-  if(!args.length) {
-    return '';
-  }
-
-  return args.reduce((acc, cur) => isArray(cur) && acc, true) ?
-    args.reduce((acc, val) => [ ...acc, ...val ], []) :
-    args.join('');
-};
+export default (...args) =>
+  args.length ?
+    args.reduce((acc, cur) => isArray(cur) && acc, true) ?
+      args.reduce((acc, val) => [ ...acc, ...val ], []) :
+      args.join('') :
+    '';

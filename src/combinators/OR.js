@@ -1,2 +1,2 @@
 // Also called Either/Alternation
-module.exports = (f, g) => x => f(x) || g(x);
+export default (f, g) => x => f(x) || g(x);

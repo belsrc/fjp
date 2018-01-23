@@ -1,4 +1,4 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // Removes falsey values from an array.
 //
@@ -8,4 +8,4 @@ const isArray = require('./util/isArray');
 // compact(null)
 // >> []
 //
-module.exports = arr => isArray(arr) ? arr.filter(Boolean) : [];
+export default arr => isArray(arr) ? arr.filter(Boolean) : [];

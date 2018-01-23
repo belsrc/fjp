@@ -1,4 +1,4 @@
-const isString = require('./../util/isString');
+import isString from './../util/isString';
 
 // Converts a string to kebab case.
 //
@@ -17,7 +17,7 @@ const isString = require('./../util/isString');
 // kebabCase('functional_javascript');
 // >> functional-javascript
 //
-module.exports = str =>
+export default str =>
   isString(str) ?
     str
       .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)

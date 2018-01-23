@@ -1,5 +1,5 @@
-const isFunction = require('./util/isFunction');
-const isArray = require('./util/isArray');
+import isFunction from './util/isFunction';
+import isArray from './util/isArray';
 
 // Groups the elements of an array based on the given function.
 //
@@ -15,7 +15,7 @@ const isArray = require('./util/isArray');
 // groupBy(Math.floor, null);
 // >> {}
 //
-module.exports = (func, arr) =>
+export default (func, arr) =>
   func != null && isArray(arr) ?
     arr.map(isFunction(func) ? func : val => val[func]).reduce((acc, val, i) => {
       acc[val] = (acc[val] || []).concat(arr[i]);

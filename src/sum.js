@@ -1,4 +1,4 @@
-const isArray = require('./util/isArray');
+import isArray from './util/isArray';
 
 // Returns the sum of two or more numbers or an array of numbers.
 //
@@ -8,4 +8,4 @@ const isArray = require('./util/isArray');
 // sum(1, 2, 3, 4);
 // >> 10
 //
-module.exports = (...nums) => isArray(nums) ? [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) : 0;
+export default (...nums) => isArray(nums) ? [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) : 0;

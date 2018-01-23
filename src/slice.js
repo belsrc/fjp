@@ -1,4 +1,4 @@
-const isArray = require('./util/isArray');
-const clone = require('./util/clone');
+import isArray from './util/isArray';
+import clone from './util/clone';
 
-module.exports = (arr, start, end) => isArray(arr) ? clone(arr).slice(start, end) : [];
+export default (arr, start, end) => isArray(arr) ? clone(arr).slice(start, end) : [];

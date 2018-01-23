@@ -19,4 +19,4 @@ function select(obj, arr) {
   /* eslint-enable no-return-assign */
 }
 
-module.exports = select;
+export default select;
