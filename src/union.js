@@ -6,4 +6,5 @@ import isArray from './util/isArray';
 // union([ 1, 2, 3 ], [ 4, 3, 2 ]);
 // >> [ 1, 2, 3, 4 ]
 //
-export default curry((a, b) => Array.from(new Set([ ...isArray(a) ? a : [], ...isArray(b) ? b : [] ])));
+export default curry((a, b) =>
+  Array.from(new Set([ ...isArray(a) ? a : [], ...isArray(b) ? b : [] ])));

@@ -23,7 +23,12 @@ test('returns correctly concatenated strings', t => {
 });
 
 test('returns correctly concatenated arrays', t => {
-  const expected = [ 'foo', 'bar', 'hello', 'world' ];
+  const expected = [
+    'foo',
+    'bar',
+    'hello',
+    'world',
+  ];
   const actual = concat([ 'foo', 'bar' ], [ 'hello', 'world' ]);
 
   t.deepEqual(actual, expected);

@@ -3,7 +3,15 @@ import test from 'ava';
 import deviation from './../src/deviation';
 
 test('returns number for sample deviation', t => {
-  const arr = [ 10, 2, 38, 23, 38, 23, 21 ];
+  const arr = [
+    10,
+    2,
+    38,
+    23,
+    38,
+    23,
+    21,
+  ];
   const expected = 'number';
   const actual = deviation(false, arr);
 
@@ -11,7 +19,15 @@ test('returns number for sample deviation', t => {
 });
 
 test('returns number for population deviation', t => {
-  const arr = [ 10, 2, 38, 23, 38, 23, 21 ];
+  const arr = [
+    10,
+    2,
+    38,
+    23,
+    38,
+    23,
+    21,
+  ];
   const expected = 'number';
   const actual = deviation(true, arr);
 
@@ -19,7 +35,15 @@ test('returns number for population deviation', t => {
 });
 
 test('returns correct value for sample deviation', t => {
-  const arr = [ 10, 2, 38, 23, 38, 23, 21 ];
+  const arr = [
+    10,
+    2,
+    38,
+    23,
+    38,
+    23,
+    21,
+  ];
   const expected = 13.284434142114991;
   const actual = deviation(false, arr);
 
@@ -27,7 +51,15 @@ test('returns correct value for sample deviation', t => {
 });
 
 test('returns correct value for population deviation', t => {
-  const arr = [ 10, 2, 38, 23, 38, 23, 21 ];
+  const arr = [
+    10,
+    2,
+    38,
+    23,
+    38,
+    23,
+    21,
+  ];
   const expected = 12.29899614287479;
   const actual = deviation(true, arr);
 

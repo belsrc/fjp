@@ -8,4 +8,7 @@ import isArray from './util/isArray';
 // sum(1, 2, 3, 4);
 // >> 10
 //
-export default (...nums) => isArray(nums) ? [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) : 0;
+export default (...nums) =>
+  isArray(nums) ?
+    [].concat(...nums).reduce((acc, val) => acc + Number(val), 0) :
+    0;

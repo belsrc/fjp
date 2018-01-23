@@ -14,4 +14,6 @@ import clone from './util/clone';
 // >> [ 1, 2, 3, 4, 5 ]
 //
 export default curry((fn, arr) =>
-  isArray(arr) ? isFunction(fn) ? [...new Set(map(fn, arr))] : [...new Set(clone(arr))] : []);
+  isArray(arr) ?
+    isFunction(fn) ? [...new Set(map(fn, arr))] : [...new Set(clone(arr))] :
+    []);

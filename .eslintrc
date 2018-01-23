@@ -49,7 +49,7 @@
     "linebreak-style": [1,"unix"],
     "lines-around-comment": [1,{"beforeBlockComment":true,"beforeLineComment":true,"allowBlockStart":true}],
     "max-depth": [1,3],
-    "max-len": [1,{"code":120,"tabWidth": 2,"ignoreRegExpLiterals": true,"ignoreComments": true,"ignoreUrls": true,"ignoreTemplateLiterals": true}],
+    "max-len": [1,{"code":100,"tabWidth": 2,"ignoreRegExpLiterals": true,"ignoreComments": true,"ignoreUrls": true,"ignoreTemplateLiterals": true}],
     "max-nested-callbacks": [1,3],
     "multiline-ternary": [2, "always-multiline"],
     "new-cap": [1,{"newIsCap":true}],

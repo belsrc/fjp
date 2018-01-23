@@ -18,8 +18,10 @@ import isArray from './util/isArray';
 //
 export default curry((func, arr) =>
   func != null && isArray(arr) ?
-    arr.map(isFunction(func) ? func : val => val[func]).reduce((acc, val, i) => {
-      acc[val] = (acc[val] || []).concat(arr[i]);
-      return acc;
-    }, {}) :
+    arr
+      .map(isFunction(func) ? func : val => val[func])
+      .reduce((acc, val, i) => {
+        acc[val] = (acc[val] || []).concat(arr[i]);
+        return acc;
+      }, {}) :
     {});

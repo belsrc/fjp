@@ -1,1 +1,2 @@
-export default (fn, ...partialArgs) => (...remainingArgs) => fn(...partialArgs, ...remainingArgs);
+export default (fn, ...partialArgs) => (...remainingArgs) =>
+  fn(...partialArgs, ...remainingArgs);

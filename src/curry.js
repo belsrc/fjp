@@ -11,7 +11,9 @@
 // >> 2
 //
 function curry(fn, arity = fn.length, ...args) {
-  return arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
+  return arity <= args.length ?
+    fn(...args) :
+    curry.bind(null, fn, arity, ...args);
 }
 
 export default curry;
