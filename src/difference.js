@@ -22,7 +22,7 @@ import isArray from './util/isArray';
 // >> []
 //
 export default curry((a, b) => {
-  const s = isArray(b) ? new Set(b) : new Set();
+  const s = isArray(b) && b.length ? new Set(b) : new Set();
 
-  return isArray(a) ? a.filter(x => !s.has(x)) : [...s];
+  return isArray(a) && a.length ? a.filter(x => !s.has(x)) : [...s];
 });

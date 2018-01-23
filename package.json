@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava --verbose",
+    "coverage": "nyc --reporter=lcov npm run test && nyc report",
     "clean": "prettier --write --print-width 120 --single-quote --trailing-comma es5 \"{src,test}/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"{src,test}/**/*.js\""
   },
   "repository": {
@@ -23,6 +24,7 @@
     "babel-preset-env": "1.6.1",
     "babel-register": "6.26.0",
     "eslint": "4.15.0",
+    "nyc": "11.4.1",
     "prettier": "1.9.2",
     "rollup": "0.54.1",
     "rollup-plugin-babel": "3.0.3"

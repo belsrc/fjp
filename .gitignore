@@ -53,5 +53,6 @@ yarn-error.log*
 *.zip
 
 # Project Specific
-/playground
+playground/
 .ignore/
+.nyc_output/
