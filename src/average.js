@@ -1,4 +1,3 @@
-import curry from '.curry';
 import isArray from './util/isArray';
 import sum from './sum';
 
@@ -13,4 +12,4 @@ import sum from './sum';
 // average();
 // >> 0
 //
-export default curry((...nums) => isArray(nums) && nums.length ? sum(...nums) / [].concat(...nums).length : 0);
+export default (...nums) => isArray(nums) && nums.length ? sum(...nums) / [].concat(...nums).length : 0;

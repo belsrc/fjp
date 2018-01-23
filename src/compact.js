@@ -1,3 +1,4 @@
+import clone from './util/clone';
 import isArray from './util/isArray';
 
 // Removes falsey values from an array.
@@ -8,4 +9,4 @@ import isArray from './util/isArray';
 // compact(null)
 // >> []
 //
-export default arr => isArray(arr) ? arr.filter(Boolean) : [];
+export default arr => isArray(arr) ? clone(arr.filter(Boolean)) : [];

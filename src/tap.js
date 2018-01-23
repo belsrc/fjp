@@ -1,8 +1,8 @@
 import curry from './curry';
 
-const tap = curry((x, y) => {
+const tap = (x, y) => {
   x(y);
   return y;
-});
+};
 
-export default tap;
+export default curry(tap);

@@ -1,3 +1,4 @@
+import curry from './curry';
 import isArray from './util/isArray';
 
 // Returns the difference between two arrays.
@@ -20,8 +21,8 @@ import isArray from './util/isArray';
 // difference(null, null)
 // >> []
 //
-export default (a, b) => {
+export default curry((a, b) => {
   const s = isArray(b) ? new Set(b) : new Set();
 
   return isArray(a) ? a.filter(x => !s.has(x)) : [...s];
-};
+});

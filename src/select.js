@@ -1,9 +1,11 @@
+import curry from './curry';
+
 // Selects the key-value pairs corresponding to the given keys from an object.
 //
 // select({ a: 1, b: '2', c: { d: 3 } }, [ 'a', 'c.d' ]);
 // >> { a: 1, d: 3 }
 //
-function select(obj, arr) {
+function select(arr, obj) {
   arr.reduce((acc, curr) => {
     const split = curr.split('.');
 
@@ -19,4 +21,4 @@ function select(obj, arr) {
   /* eslint-enable no-return-assign */
 }
 
-export default select;
+export default curry(select);

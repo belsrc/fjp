@@ -1,3 +1,4 @@
+import curry from './curry';
 import isArray from './util/isArray';
 import clone from './util/clone';
 
@@ -7,4 +8,4 @@ import clone from './util/clone';
 // push(5)
 // >> [5]
 //
-export default (val, arr) => isArray(arr) ? [ ...clone(arr), val ] : [val];
+export default curry((val, arr) => isArray(arr) ? [ ...clone(arr), val ] : [val]);

@@ -1,2 +1,4 @@
+import curry from './../curry';
+
 // Also called Either/Alternation
-export default (f, g) => x => f(x) || g(x);
+export default curry((f, g) => x => f(x) || g(x));

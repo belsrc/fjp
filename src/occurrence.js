@@ -1,3 +1,4 @@
+import curry from './curry';
 import isArray from './util/isArray';
 
 // Counts the occurrences of a value in an array.
@@ -5,4 +6,4 @@ import isArray from './util/isArray';
 // occurrences(1, [ 1, 1, 2, 1, 2, 3 ]);
 // >> 3
 //
-export default (value, arr) => isArray(arr) ? arr.reduce((acc, val) => val === value ? acc + 1 : acc, 0) : 0;
+export default curry((value, arr) => isArray(arr) ? arr.reduce((acc, val) => val === value ? acc + 1 : acc, 0) : 0);

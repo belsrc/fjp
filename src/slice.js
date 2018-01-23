@@ -1,4 +1,5 @@
+import curry from './curry';
 import isArray from './util/isArray';
 import clone from './util/clone';
 
-export default (arr, start, end) => isArray(arr) ? clone(arr).slice(start, end) : [];
+export default curry((start, end, arr) => isArray(arr) ? clone(arr).slice(start, end) : []);

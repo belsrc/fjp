@@ -1,4 +1,5 @@
+import curry from './curry';
 import isFunction from './util/isFunction';
 import isArray from './util/isArray';
 
-export default (func, arr) => isArray(arr) && isFunction(func) ? arr.some(func) : false;
+export default curry((fn, arr) => isArray(arr) && isFunction(fn) ? arr.some(fn) : false);
