@@ -1,6 +1,6 @@
 import 'babel-core/register';
 import test from 'ava';
-import average from './../src/average';
+import average from './../source/average';
 
 test('returns zero for null arg', t => {
   const expected = 0;

@@ -1,6 +1,6 @@
 import 'babel-core/register';
 import test from 'ava';
-import deviation from './../src/deviation';
+import deviation from './../source/deviation';
 
 test('returns number for sample deviation', t => {
   const arr = [

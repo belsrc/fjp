@@ -1,3 +1,37 @@
 {
-  "presets": ["env"]
+  "env": {
+    "es": {
+      "presets": [
+        ["env", {
+          "modules": false
+        }]
+      ],
+      "plugins": ["annotate-pure-calls"]
+    },
+    "cjs": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "node": "6.5"
+          },
+          "modules": false
+        }]
+      ],
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "annotate-pure-calls"
+      ]
+    },
+    "umd": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["ie >= 11"]
+          },
+          "modules": false
+        }]
+      ],
+      "comments": false
+    }
+  }
 }

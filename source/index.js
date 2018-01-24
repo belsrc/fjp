@@ -1,0 +1,12 @@
+export { default as clone } from './util/clone';
+export { default as isArray } from './util/isArray';
+export { default as isFunction } from './util/isFunction';
+export { default as isObject } from './util/isObject';
+export { default as isString } from './util/isString';
+export { default as not } from './util/not';
+export { default as associate } from './associate';
+export { default as average } from './average';
+export { default as compact } from './compact';
+export { default as compose } from './compose';
+export { default as concat } from './concat';
+export { default as curry } from './curry';

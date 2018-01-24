@@ -1,6 +1,6 @@
 import 'babel-core/register';
 import test from 'ava';
-import compact from './../src/compact';
+import compact from './../source/compact';
 
 test('returns empty array for null arg', t => {
   const actual = compact();

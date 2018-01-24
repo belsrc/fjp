@@ -1,6 +1,6 @@
 import 'babel-core/register';
 import test from 'ava';
-import concat from './../src/concat';
+import concat from './../source/concat';
 
 test('returns empty string for no args', t => {
   const expected = '';

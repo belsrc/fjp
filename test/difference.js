@@ -1,6 +1,6 @@
 import 'babel-core/register';
 import test from 'ava';
-import difference from './../src/difference';
+import difference from './../source/difference';
 
 test('returns empty array for null args', t => {
   const actual = difference(null, null);
