@@ -12,14 +12,15 @@
     "dist"
   ],
   "scripts": {
-    "test": "ava --verbose",
+    "test": "cross-env BABEL_ENV=cjs ava --verbose",
     "coverage": "nyc --reporter=lcov npm run test && nyc report",
     "clean": "prettier --write --config .prettierrc \"{source,test}/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"{source,test}/**/*.js\"",
     "build:es": "cross-env BABEL_ENV=es babel source --out-dir es",
     "build:cjs": "cross-env BABEL_ENV=cjs babel source --out-dir src",
     "build:umd": "cross-env NODE_ENV=development BABEL_ENV=umd rollup -c -o dist/fjp.js",
     "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=umd rollup -c -o dist/fjp.min.js",
-    "build": "npm run build:es && npm run build:cjs && npm run build:umd && npm run build:umd:min"
+    "build": "npm run build:es && npm run build:cjs && npm run build:umd && npm run build:umd:min",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
     "babel-plugin-annotate-pure-calls": "0.2.2",
+    "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
     "babel-preset-env": "1.6.1",
     "babel-register": "6.26.0",
