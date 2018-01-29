@@ -5,7 +5,7 @@ function clone(x) {
     return x;
   }
 
-  if(Object.prototype.toString.apply(x) === '[object Array]') {
+  if(Array.isArray(x)) {
     const arr = [];
 
     for(i = 0; i < x.length; i += 1) {
