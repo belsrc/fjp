@@ -1,37 +1,38 @@
 import 'babel-core/register';
-import isArray from './index';
+import isString from './index';
 
-const data = [ 1, 2, 3, 4, 5 ];
+const data = 'foo bar';
+
 
 module.exports = {
-  name: 'isArray',
+  name: 'isString',
   tests: {
+    ['instanceof']() {
+      return data instanceof String;
+    },
+    ['constructor *']() {
+      return data.constructor === String;
+    },
     ['prototype.toString']() {
-      return Object.prototype.toString.apply(data) === '[object Array]';
+      return Object.prototype.toString.call(data) === '[object String]';
     },
-    ['Array.isArray(x) *']() {
-      return Array.isArray(data);
-    },
-    ['val & constructor']() {
-      return data && data.constructor === Array;
-    },
-    ['fjp.isArray(x) *']() {
-      return isArray(data);
+    ['isString *']() {
+      return isString(data);
     },
   },
 };
 
 /*
 ┌───────────────────────────────────┬────────────────────┬────────────────────┐
-│ isArray                           │ Hertz              │ Margin of Error    │
+│ isString                          │ Hertz              │ Margin of Error    │
 ├───────────────────────────────────┼────────────────────┼────────────────────┤
-│ prototype.toString                │ 167,968,125        │ 0.45%              │
+│ instanceof                        │ 861,953,917        │ 0.14%              │
 ├───────────────────────────────────┼────────────────────┼────────────────────┤
-│ Array.isArray(x) *                │ 860,344,505        │ 0.14%              │
+│ constructor *                     │ 860,763,071        │ 0.24%              │
 ├───────────────────────────────────┼────────────────────┼────────────────────┤
-│ val & constructor                 │ 860,951,290        │ 0.15%              │
+│ prototype.toString                │ 170,625,186        │ 0.74%              │
 ├───────────────────────────────────┼────────────────────┼────────────────────┤
-│ fjp.isArray(x) *                  │ 859,235,003        │ 0.13%              │
+│ isString *                        │ 861,848,934        │ 0.12%              │
 └───────────────────────────────────┴────────────────────┴────────────────────┘
-  Fastest is val & constructor,Array.isArray(x) *
-*/
+  Fastest is isString *,instanceof,constructor *
+ */

@@ -73,6 +73,7 @@ function recursiveClone(o) {
   return obj;
 }
 
+/* eslint-disable no-return-assign, no-sequences */
 function es6PrimLast(val) {
   return Object.prototype.toString.apply(val) === '[object Array]' ?
     val.map(i => es6PrimLast(i)) :
@@ -105,6 +106,7 @@ function es6PrimitiveFirst(val) {
         {}
       );
 }
+/* eslint-enable no-return-assign, no-sequences */
 
 module.exports = {
   name: 'clone',
@@ -112,7 +114,7 @@ module.exports = {
     ['JSON.parse(JSON.stringify(x))']() {
       JSON.parse(JSON.stringify(data));
     },
-    ['Object.assign({}, x)']() {
+    ['Object.assign({}, x) [Shallow]']() {
       Object.assign({}, data);
     },
     ['recursiveClone(x) *']() {
@@ -132,3 +134,24 @@ module.exports = {
     },
   },
 };
+
+/*
+┌───────────────────────────────────┬────────────────────┬────────────────────┐
+│ clone                             │ Hertz              │ Margin of Error    │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ JSON.parse(JSON.stringify(x))     │ 192,611            │ 0.45%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ Object.assign({}, x) [Shallow]    │ 721,197            │ 0.33%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ recursiveClone(x) *               │ 1,330,365          │ 0.39%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ es6PrimLast(x)                    │ 574,186            │ 0.46%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ es6PrimLastIsArray(x)             │ 633,618            │ 0.28%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ es6PrimitiveFirst(x)              │ 624,451            │ 0.41%              │
+├───────────────────────────────────┼────────────────────┼────────────────────┤
+│ fjp.clone(x) *                    │ 1,391,789          │ 0.45%              │
+└───────────────────────────────────┴────────────────────┴────────────────────┘
+  Fastest is fjp.clone(x) *
+ */
