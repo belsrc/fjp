@@ -1,1 +1,1 @@
-export default value => value != null && typeof value === 'object';
+export default value => value instanceof Object && value.constructor === Object;

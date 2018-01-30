@@ -1,1 +1,1 @@
-export default value => typeof value === 'string' || value instanceof String;
+export default value => value.constructor === String;

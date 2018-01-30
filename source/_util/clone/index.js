@@ -15,15 +15,19 @@ function clone(x) {
     return arr;
   }
 
-  const obj = {};
+  if(x instanceof Object && x.constructor === Object) {
+    const obj = {};
 
-  for(i in x) {
-    if(x.hasOwnProperty(i)) {
-      obj[i] = clone(x[i]);
+    for(i in x) {
+      if(x.hasOwnProperty(i)) {
+        obj[i] = clone(x[i]);
+      }
     }
+
+    return obj;
   }
 
-  return obj;
+  return x;
 }
 
 export default clone;
