@@ -16,7 +16,7 @@ function green(str) {
 function getTable(name) {
   return new Table({
     head: [ name, 'Hertz', 'Margin of Error' ],
-    colWidths: [ 35, 20, 20 ],
+    colWidths: [ 40, 20, 20 ],
   });
 }
 
