@@ -6,6 +6,11 @@ plugins:
   eslint:
     enabled: true
     config:
-     config: .eslintrc
-     extensions:
+      config: .eslintrc
+      extensions:
       - .js
+exclude_patterns:
+- "**/node_modules/"
+- "dist/"
+- "source/**/*.test.js"
+- "source/**/*.bench.js"
