@@ -1,9 +1,12 @@
 language:
   node_js
+node_js:
+  - "7"
 branches:
   only:
   - develop
 install:
   - npm install
 script:
-  - npm run travis
+  - npm run coverage
+  - npm run build
