@@ -15,3 +15,4 @@ exclude_patterns:
 - "dist/"
 - "source/**/*.test.js"
 - "source/**/*.bench.js"
+- "benchaRunner.js"
