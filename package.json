@@ -16,6 +16,7 @@
     "test": "cross-env BABEL_ENV=cjs ava --verbose",
     "bench": "cross-env BABEL_ENV=cjs node ./benchRunner.js",
     "coverage": "nyc --reporter=lcov npm run test && nyc report && codecov",
+    "travis": "npm run coverage;BABEL_ENV=es babel source --out-dir es;NODE_ENV=production BABEL_ENV=umd rollup -c -o dist/fjp.min.js",
     "clean": "prettier --write --config .prettierrc \"source/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"source/**/*.js\"",
     "build:es": "cross-env BABEL_ENV=es babel source --out-dir es",
     "build:cjs": "cross-env BABEL_ENV=cjs babel source --out-dir src",
