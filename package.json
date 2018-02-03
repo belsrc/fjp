@@ -23,7 +23,6 @@
     "build:umd": "cross-env NODE_ENV=development BABEL_ENV=umd rollup -c -o dist/fjp.js",
     "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=umd rollup -c -o dist/fjp.min.js",
     "build": "npm run build:es && npm run build:cjs && npm run build:umd && npm run build:umd:min",
-    "prepublish": "npm run build",
     "release:first": "standard-version --first-release",
     "release": "standard-version --no-verify",
     "release:full": "npm run release && git push --follow-tags origin master && npm publish"
