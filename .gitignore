@@ -57,5 +57,6 @@ pg.js
 playground/
 .ignore/
 .nyc_output/
+coverage.lcov
 es/
 src/
