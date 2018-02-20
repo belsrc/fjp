@@ -1,3 +1,4 @@
+// --- Utilities --- //
 export { default as clone } from './_util/clone';
 export { default as isArray } from './_util/isArray';
 export { default as isFunction } from './_util/isFunction';
@@ -5,6 +6,7 @@ export { default as isObject } from './_util/isObject';
 export { default as isString } from './_util/isString';
 export { default as not } from './_util/not';
 
+// --- Combinators --- //
 export { default as A } from './_combinators/A';
 export { default as apply } from './_combinators/A';
 export { default as I } from './_combinators/I';
@@ -13,7 +15,10 @@ export { default as K } from './_combinators/K';
 export { default as constant } from './_combinators/K';
 export { default as OR } from './_combinators/OR';
 export { default as alternation } from './_combinators/OR';
+export { default as S } from './_combinators/S';
+export { default as sequence } from './_combinators/S';
 
+// --- Functions --- //
 export { default as associate } from './associate';
 export { default as average } from './average';
 export { default as compact } from './compact';
