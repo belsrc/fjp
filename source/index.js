@@ -6,9 +6,13 @@ export { default as isString } from './_util/isString';
 export { default as not } from './_util/not';
 
 export { default as A } from './_combinators/A';
+export { default as apply } from './_combinators/A';
 export { default as I } from './_combinators/I';
+export { default as identity } from './_combinators/I';
 export { default as K } from './_combinators/K';
+export { default as constant } from './_combinators/K';
 export { default as OR } from './_combinators/OR';
+export { default as alternation } from './_combinators/OR';
 
 export { default as associate } from './associate';
 export { default as average } from './average';
