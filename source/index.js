@@ -17,6 +17,7 @@ export { default as OR } from './_combinators/OR';
 export { default as alternation } from './_combinators/OR';
 export { default as S } from './_combinators/S';
 export { default as sequence } from './_combinators/S';
+export { default as fork } from './_combinators/Fork';
 
 // --- Functions --- //
 export { default as associate } from './associate';
