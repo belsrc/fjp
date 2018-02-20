@@ -19,6 +19,9 @@ export { default as S } from './_combinators/S';
 export { default as sequence } from './_combinators/S';
 export { default as fork } from './_combinators/Fork';
 
+// --- Monads --- //
+export { default as Maybe } from './_monads/Maybe';
+
 // --- Functions --- //
 export { default as associate } from './associate';
 export { default as average } from './average';
@@ -45,6 +48,7 @@ export { default as partial } from './partial';
 export { default as pipe } from './pipe';
 export { default as pop } from './pop';
 export { default as promisify } from './promisify';
+export { default as property } from './property';
 export { default as push } from './push';
 export { default as reduce } from './reduce';
 export { default as reduceRight } from './reduceRight';
