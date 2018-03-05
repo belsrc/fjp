@@ -1,5 +1,5 @@
 import curry from './../curry';
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 
 // Counts the occurrences of a value in an array.
 //

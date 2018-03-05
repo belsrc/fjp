@@ -1,5 +1,5 @@
 import curry from './../curry';
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 
 // Returns the symmetric difference between two arrays.
 //

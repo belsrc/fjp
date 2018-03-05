@@ -1,28 +1,31 @@
 // --- Utilities --- //
-export { default as clone } from './_util/clone';
-export { default as isArray } from './_util/isArray';
-export { default as isFunction } from './_util/isFunction';
-export { default as isObject } from './_util/isObject';
-export { default as isString } from './_util/isString';
-export { default as not } from './_util/not';
+export { default as clone } from './util/clone';
+export { default as isArray } from './util/isArray';
+export { default as isFunction } from './util/isFunction';
+export { default as isObject } from './util/isObject';
+export { default as isString } from './util/isString';
+export { default as not } from './util/not';
+export { default as tap } from './util/tap';
 
 // --- Combinators --- //
-export { default as A } from './_combinators/A';
-export { default as apply } from './_combinators/A';
-export { default as I } from './_combinators/I';
-export { default as identity } from './_combinators/I';
-export { default as K } from './_combinators/K';
-export { default as constant } from './_combinators/K';
-export { default as OR } from './_combinators/OR';
-export { default as alternation } from './_combinators/OR';
-export { default as S } from './_combinators/S';
-export { default as sequence } from './_combinators/S';
-export { default as fork } from './_combinators/Fork';
+export { default as A } from './combinators/A';
+export { default as apply } from './combinators/A';
+export { default as I } from './combinators/I';
+export { default as identity } from './combinators/I';
+export { default as K } from './combinators/K';
+export { default as constant } from './combinators/K';
+export { default as OR } from './combinators/OR';
+export { default as alternation } from './combinators/OR';
+export { default as fork } from './combinators/Fork';
+export { default as T } from './combinators/T';
+export { default as thrush } from './combinators/T';
+export { default as applyTo } from './combinators/T';
 
 // --- Monads --- //
-export { default as Maybe } from './_monads/Maybe';
+export { default as Maybe } from './monads/Maybe';
 
 // --- Functions --- //
+export { default as all } from './every';
 export { default as associate } from './associate';
 export { default as average } from './average';
 export { default as compact } from './compact';
@@ -30,13 +33,16 @@ export { default as compose } from './compose';
 export { default as concat } from './concat';
 export { default as concatN } from './concatN';
 export { default as curry } from './curry';
+
 // export { default as delete } from './delete';
 export { default as deviation } from './deviation';
 export { default as difference } from './difference';
 export { default as distinct } from './distinct';
+
 // export { default as each } from './each';
 export { default as every } from './every';
 export { default as filter } from './filter';
+
 // export { default as find } from './find';
 export { default as from } from './from';
 export { default as groupBy } from './groupBy';
@@ -59,10 +65,10 @@ export { default as shuffle } from './shuffle';
 export { default as slice } from './slice';
 export { default as some } from './some';
 export { default as sort } from './sort';
+
 // export { default as splice } from './splice';
 export { default as sum } from './sum';
 export { default as sumN } from './sumN';
 export { default as symmetricDifference } from './symmetricDifference';
-export { default as tap } from './tap';
 export { default as union } from './union';
 export { default as unshift } from './unshift';

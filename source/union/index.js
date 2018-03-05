@@ -1,5 +1,5 @@
 import curry from './../curry';
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 
 // Returns every element that exists in any of the two arrays once.
 //

@@ -1,6 +1,6 @@
 import curry from './../curry';
-import isArray from './../_util/isArray';
-import clone from './../_util/clone';
+import isArray from './../util/isArray';
+import clone from './../util/clone';
 
 // push(5, [ 1, 2, 3, 4 ]);
 // >> [ 1, 2, 3, 4, 5 ]

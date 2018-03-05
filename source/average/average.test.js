@@ -3,6 +3,7 @@ import test from 'ava';
 import average from './index';
 
 test.todo('these tests need to be checked');
+
 // test('returns zero for null arg', t => {
 //   const expected = 0;
 //   const actual = average();

@@ -1,4 +1,4 @@
 import curry from './../curry';
-import clone from './../_util/clone';
+import clone from './../util/clone';
 
 export default curry((prop, obj) => clone(obj[prop]));

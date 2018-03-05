@@ -10,7 +10,17 @@ test('returns empty array for null arg', t => {
 
 test('returns array', t => {
   const arr = [
-    0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34,
+    0,
+    1,
+    false,
+    2,
+    '',
+    3,
+    'a',
+    'e' * 23,
+    NaN,
+    's',
+    34,
   ];
   const actual = compact(arr);
 
@@ -19,10 +29,25 @@ test('returns array', t => {
 
 test('returns correct value', t => {
   const arr = [
-    0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34,
+    0,
+    1,
+    false,
+    2,
+    '',
+    3,
+    'a',
+    'e' * 23,
+    NaN,
+    's',
+    34,
   ];
   const expected = [
-    1, 2, 3, 'a', 's', 34,
+    1,
+    2,
+    3,
+    'a',
+    's',
+    34,
   ];
   const actual = compact(arr);
 

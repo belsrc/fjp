@@ -1,7 +1,7 @@
 import curry from './../curry';
-import isFunction from './../_util/isFunction';
-import isArray from './../_util/isArray';
-import clone from './../_util/clone';
+import isFunction from './../util/isFunction';
+import isArray from './../util/isArray';
+import clone from './../util/clone';
 
 export default curry((func, arr) =>
   !isFunction(func) ?

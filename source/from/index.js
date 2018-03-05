@@ -1,4 +1,4 @@
-import clone from './../_util/clone';
+import clone from './../util/clone';
 import distinct from './../distinct';
 import filter from './../filter';
 import groupBy from './../groupBy';

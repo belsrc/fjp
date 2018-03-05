@@ -1,9 +1,17 @@
 import curry from './../curry';
-import isFunction from './../_util/isFunction';
-import isArray from './../_util/isArray';
-import clone from './../_util/clone';
+import isFunction from './../util/isFunction';
+import isArray from './../util/isArray';
 
-export default curry((func, arr) =>
+/**
+ * Filters the array using the given function.
+ * @signature filter :: (a -> Boolean) -> [a] -> [a]
+ * @func
+ * @example
+ * filter(x => x > 5, [1, 2, 3, 5, 6, 7]) // [6, 7]
+ */
+const filter = curry((func, arr) =>
   !isFunction(func) ?
-    isArray(arr) ? clone(arr) : [] :
-    isArray(arr) ? clone(arr.filter(func)) : []);
+    isArray(arr) ? arr : [] :
+    isArray(arr) ? arr.filter(func) : []);
+
+export default filter;

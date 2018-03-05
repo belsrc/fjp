@@ -20,7 +20,14 @@ test('returns concatenated array', t => {
   const actual = concat([ 1, 2, 3 ], [ 4, 5, 6 ]);
 
   t.true(Array.isArray(actual));
-  t.deepEqual(actual, [ 1, 2, 3, 4, 5, 6 ]);
+  t.deepEqual(actual, [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+  ]);
 });
 
 test('returns concatenated string', t => {

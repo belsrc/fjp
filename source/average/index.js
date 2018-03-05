@@ -1,16 +1,16 @@
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 import sum from './../sum';
 
-// Returns the average of two or more numbers or an array of numbers.
-//
-// average([ 1, 2, 3 ]);
-// >> 2
-//
-// average(1, 2, 3);
-// >> 2
-//
-// average();
-// >> 0
-//
-export default (...nums) =>
+/**
+ * Averages the given array values
+ * @signature average :: [Number] -> Number
+ * @func
+ * @example
+ * average([ 1, 2, 3 ]); // 2
+ * average(1, 2, 3); // 2
+ * average(); // 0
+ */
+const average = (...nums) =>
   isArray(nums) && nums.length ? sum([...nums]) / [...nums].length : 0;
+
+export default average;

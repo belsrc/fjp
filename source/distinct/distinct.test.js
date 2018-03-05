@@ -1,5 +1,5 @@
 import 'babel-core/register';
 import test from 'ava';
-import difference from './index';
+import distinct from './index';
 
 test.todo('these tests need to be written');

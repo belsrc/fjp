@@ -1,12 +1,13 @@
-import clone from './../_util/clone';
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 
-// Removes falsey values from an array.
-//
-// compact([ 0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34 ]);
-// >> [ 1, 2, 3, 'a', 's', 34 ]
-//
-// compact(null)
-// >> []
-//
-export default arr => isArray(arr) ? clone(arr.filter(Boolean)) : [];
+/**
+ * Removes falsey values from an array.
+ * @signature compact :: [a] -> [a]
+ * @func
+ * @example
+ * compact([ 0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34 ]); // [ 1, 2, 3, 'a', 's', 34 ]
+ * compact(null) // []
+ */
+const compact = arr => isArray(arr) ? arr.filter(Boolean) : [];
+
+export default compact;

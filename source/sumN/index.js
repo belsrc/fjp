@@ -1,4 +1,4 @@
-import isArray from './../_util/isArray';
+import isArray from './../util/isArray';
 import reduce from './../reduce';
 
 // Returns the sum of two or more numbers or an array of numbers.

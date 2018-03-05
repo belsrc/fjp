@@ -1,4 +1,4 @@
-import clone from './../_util/clone';
+import clone from './../util/clone';
 
 // Randomizes the order of the values of an array, returning a new array.
 // Uses the Fisher-Yates algoritm to reorder the elements of the array.

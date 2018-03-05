@@ -8,7 +8,7 @@ import curry from './../curry';
 // deviation([ 10, 2, 38, 23, 38, 23, 21 ], true);
 // >> 12.29899614287479 (population)
 //
-export default curry((usePopulation, arr) => {
+const deviation = curry((usePopulation, arr) => {
   const mean = arr.reduce((acc, val) => acc + val, 0) / arr.length;
 
   return Math.sqrt(arr
@@ -16,3 +16,5 @@ export default curry((usePopulation, arr) => {
     .reduce((acc, val) => acc + val, 0) /
       (arr.length - (usePopulation ? 0 : 1)));
 });
+
+export default deviation;

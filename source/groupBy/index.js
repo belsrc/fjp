@@ -1,6 +1,6 @@
 import curry from './../curry';
-import isFunction from './../_util/isFunction';
-import isArray from './../_util/isArray';
+import isFunction from './../util/isFunction';
+import isArray from './../util/isArray';
 
 // Groups the elements of an array based on the given function.
 //
