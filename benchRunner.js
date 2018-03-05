@@ -4,7 +4,7 @@ const Benchmark = require('benchmark');
 const Table = require('cli-table');
 
 const BENCHES = 'source/**/*.bench.js';
-const THRESHOLD = 0.15;
+const THRESHOLD = 0.5;
 
 const blue = str => `\x1b[94m${ str }\x1b[0m`;
 
