@@ -4,6 +4,7 @@ export { default as isArray } from './util/isArray';
 export { default as isFunction } from './util/isFunction';
 export { default as isObject } from './util/isObject';
 export { default as isString } from './util/isString';
+export { default as isNumber } from './util/isNumber';
 export { default as not } from './util/not';
 export { default as tap } from './util/tap';
 
