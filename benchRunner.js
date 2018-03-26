@@ -53,8 +53,8 @@ function runBenchmarks(files) {
 
         if(diff > THRESHOLD) {
           const msg = `Implemented is not within ${ THRESHOLD * 100 }% of fastest: [${ fastest.count }, ${ fjp.count }]`;
-          
-          console.warning(msg);
+
+          console.log(msg);
           // throw new RangeError(msg);
         }
 

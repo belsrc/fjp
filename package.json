@@ -21,7 +21,7 @@
     "build:cjs": "cross-env BABEL_ENV=cjs babel source --out-dir src --ignore **/*.test.js **/*.bench.js",
     "build:umd": "cross-env NODE_ENV=development BABEL_ENV=umd rollup -c -o dist/fjp.js",
     "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=umd rollup -c -o dist/fjp.min.js",
-    "build": "npm-run-all test clean build:*",
+    "build": "npm-run-all unit clean build:*",
     "readme": "node doc/docs.js",
     "clean": "prettier --write --config .prettierrc \"source/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"source/**/*.js\"",
     "release:first": "npm run build && npm run readme && standard-version --first-release",
