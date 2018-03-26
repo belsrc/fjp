@@ -89,6 +89,9 @@ you can optionally pass the number of arguments to the second parameter arity.</
 <dt><a href="#isFunction">isFunction()</a></dt>
 <dd><p>Determines if the given value is a function.</p>
 </dd>
+<dt><a href="#isNumber">isNumber()</a></dt>
+<dd><p>Determines if the given value is a number.</p>
+</dd>
 <dt><a href="#isObject">isObject()</a></dt>
 <dd><p>Determines if the given value is an object.</p>
 </dd>
@@ -347,6 +350,20 @@ Determines if the given value is a function.
 ```js
 isFunction(() => {})  // true
 isFunction([1, 2, 3])  // false
+```
+<a name="isNumber"></a>
+
+## isNumber()
+Determines if the given value is a number.
+
+**Kind**: global function  
+**Signature**: isNumber :: a -> Boolean  
+**Example**  
+```js
+isNumber(42)  // true
+isNumber(8e5)  // true
+isNumber(0x2F)  // true
+isNumber('foo bar')  // false
 ```
 <a name="isObject"></a>
 
