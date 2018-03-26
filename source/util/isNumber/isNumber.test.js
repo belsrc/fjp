@@ -103,7 +103,7 @@ test('returns true for scientific number', t => {
 });
 
 test('returns true for hexidecimal number', t => {
-  const val = 0x2F;
+  const val = 0x2f;
   const actual = isNumber(val);
 
   t.true(actual);
