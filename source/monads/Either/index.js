@@ -1,3 +1,5 @@
+import Maybe from './../Maybe';
+
 class Either {
   static of(x) {
     // eslint-disable-next-line no-use-before-define
@@ -44,6 +46,10 @@ class Either {
 
   orElseFn() {
     return this;
+  }
+
+  toMaybe() {
+    return this.cata(Maybe.None, Maybe.Just);
   }
 }
 
