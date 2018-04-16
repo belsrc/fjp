@@ -20,6 +20,18 @@ class Either {
     return new Left(x);
   }
 
+  static try(fn) {
+    try {
+      const result = fn();
+
+      return Either.of(result);
+    }
+    catch(e) {
+      // eslint-disable-next-line new-cap
+      return Either.Left(e);
+    }
+  }
+
   get isRight() {
     return false;
   }
