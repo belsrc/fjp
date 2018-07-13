@@ -1,6 +1,3 @@
-# Server
-.htaccess
-
 # Linux
 .fuse_hidden*
 .directory
@@ -32,9 +29,7 @@ Desktop.ini
 .vscode
 
 # Package Manager Logs
-logs
 *.log
-debug.log*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -54,5 +49,14 @@ yarn-error.log*
 .eslintcache
 .npm
 
-# Custom
+# no zip files
+*.zip
+
+# Project Specific
+pg.js
 playground/
+.ignore/
+.nyc_output/
+coverage.lcov
+es/
+cjs/

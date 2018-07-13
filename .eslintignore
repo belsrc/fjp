@@ -1,2 +1,5 @@
 /node_modules/*
-/playground/*
+*.json
+*.example
+*.test.js
+*.bench.js

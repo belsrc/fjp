@@ -1,0 +1,18 @@
+plugins:
+  fixme:
+    enabled: true
+  nodesecurity:
+    enabled: true
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+    config:
+      config: .eslintrc
+      extensions:
+      - .js
+exclude_patterns:
+- "**/node_modules/"
+- "dist/"
+- "source/**/*.test.js"
+- "source/**/*.bench.js"
+- "benchRunner.js"
