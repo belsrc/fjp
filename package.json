@@ -28,7 +28,9 @@
     "release:first": "npm run build && npm run readme && standard-version --first-release",
     "release": "npm run build && npm run readme",
     "release:auto": "npm run release && standard-version --no-verify && git push --follow-tags origin master && npm publish",
-    "release:minor": "npm run release && standard-version --no-verify --release-as minor && git push --follow-tags origin master && npm publish"
+    "release:major": "npm run release && standard-version --no-verify --release-as minor && git push --follow-tags origin master && npm publish",
+    "release:minor": "npm run release && standard-version --no-verify --release-as minor && git push --follow-tags origin master && npm publish",
+    "release:patch": "npm run release && standard-version --no-verify --release-as minor && git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
