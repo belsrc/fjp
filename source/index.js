@@ -32,7 +32,7 @@ export { default as all } from './every';
 export { default as associate } from './associate';
 export { default as assoc } from './associate';
 export { default as altAssociate } from './altAssociate';
-export { default as altAssoc } from './alt-associate';
+export { default as altAssoc } from './altAssociate';
 export { default as average } from './average';
 export { default as both } from './both';
 export { default as compact } from './compact';

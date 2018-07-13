@@ -59,4 +59,4 @@ playground/
 .nyc_output/
 coverage.lcov
 es/
-src/
+cjs/

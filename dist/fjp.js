@@ -18,7 +18,34 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 
+var asyncToGenerator = function (fn) {
+  return function () {
+    var gen = fn.apply(this, arguments);
+    return new Promise(function (resolve, reject) {
+      function step(key, arg) {
+        try {
+          var info = gen[key](arg);
+          var value = info.value;
+        } catch (error) {
+          reject(error);
+          return;
+        }
 
+        if (info.done) {
+          resolve(value);
+        } else {
+          return Promise.resolve(value).then(function (value) {
+            step("next", value);
+          }, function (err) {
+            step("throw", err);
+          });
+        }
+      }
+
+      return step("next");
+    });
+  };
+};
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -123,6 +150,10 @@ function clone(x) {
     return x;
   }
 
+  if (x instanceof Date) {
+    return new Date(x);
+  }
+
   if (Array.isArray(x)) {
     var arr = [];
 
@@ -162,6 +193,10 @@ var isObject = function isObject(value) {
 
 var isString = function isString(value) {
   return value != null && value.constructor === String;
+};
+
+var isNumber = function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
 var not = function not(x) {
@@ -215,6 +250,31 @@ var Maybe = function () {
   }
 
   createClass(Maybe, [{
+    key: "flatten",
+    value: function flatten() {
+      return this;
+    }
+  }, {
+    key: "join",
+    value: function join() {
+      return this;
+    }
+  }, {
+    key: "filter",
+    value: function filter() {
+      return this;
+    }
+  }, {
+    key: "map",
+    value: function map() {
+      return this;
+    }
+  }, {
+    key: "chain",
+    value: function chain(fn) {
+      return this.map(fn).flatten();
+    }
+  }, {
     key: "isNothing",
     get: function get$$1() {
       return false;
@@ -227,7 +287,17 @@ var Maybe = function () {
   }], [{
     key: "of",
     value: function of(x) {
-      return x !== undefined && x !== null ? new Just(x) : new Nothing();
+      return x !== undefined && x !== null ? new _Just(x) : new Nothing();
+    }
+  }, {
+    key: "Just",
+    value: function Just(x) {
+      return new _Just(x);
+    }
+  }, {
+    key: "None",
+    value: function None() {
+      return new Nothing();
     }
   }, {
     key: "fromNullable",
@@ -243,46 +313,51 @@ var Maybe = function () {
   return Maybe;
 }();
 
-var Just = function (_Maybe) {
-  inherits(Just, _Maybe);
+var _Just = function (_Maybe) {
+  inherits(_Just, _Maybe);
 
-  function Just(val) {
-    classCallCheck(this, Just);
+  function _Just(val) {
+    classCallCheck(this, _Just);
 
-    var _this = possibleConstructorReturn(this, (Just.__proto__ || Object.getPrototypeOf(Just)).call(this));
+    var _this = possibleConstructorReturn(this, (_Just.__proto__ || Object.getPrototypeOf(_Just)).call(this));
 
     _this._val = val;
     return _this;
   }
 
-  createClass(Just, [{
+  createClass(_Just, [{
     key: "map",
     value: function map(fn) {
-      return Maybe.of(fn(this.value));
+      return Maybe.of(fn(this._val));
+    }
+  }, {
+    key: "flatten",
+    value: function flatten() {
+      if (!(this._val instanceof _Just)) {
+        return this;
+      }
+
+      return this._val.flatten();
     }
   }, {
     key: "join",
     value: function join() {
-      if (!this.value instanceof Just) {
-        return this;
-      }
-
-      return this.value.join();
+      return this.flatten();
     }
   }, {
     key: "orElse",
     value: function orElse() {
-      return this.value;
+      return this._val;
     }
   }, {
     key: "filter",
     value: function filter(fn) {
-      Maybe.fromNullable(fn(this.value) ? this.value : null);
+      Maybe.of(fn(this._val) ? this._val : null);
     }
   }, {
     key: "toString",
     value: function toString() {
-      return "Maybe.Just(" + this.value + ")";
+      return "Maybe.Just(" + this._val + ")";
     }
   }, {
     key: "value",
@@ -295,7 +370,7 @@ var Just = function (_Maybe) {
       return true;
     }
   }]);
-  return Just;
+  return _Just;
 }(Maybe);
 
 var Nothing = function (_Maybe2) {
@@ -303,28 +378,13 @@ var Nothing = function (_Maybe2) {
 
   function Nothing() {
     classCallCheck(this, Nothing);
-    return possibleConstructorReturn(this, (Nothing.__proto__ || Object.getPrototypeOf(Nothing)).apply(this, arguments));
+    return possibleConstructorReturn(this, (Nothing.__proto__ || Object.getPrototypeOf(Nothing)).call(this));
   }
 
   createClass(Nothing, [{
-    key: "map",
-    value: function map() {
-      return this;
-    }
-  }, {
-    key: "join",
-    value: function join() {
-      return this;
-    }
-  }, {
     key: "orElse",
     value: function orElse(other) {
       return other;
-    }
-  }, {
-    key: "filter",
-    value: function filter() {
-      return this.value;
     }
   }, {
     key: "toString",
@@ -334,7 +394,7 @@ var Nothing = function (_Maybe2) {
   }, {
     key: "value",
     get: function get$$1() {
-      throw new TypeError("Can' extract the value of a Nothing");
+      throw new TypeError("Can't extract the value of a Nothing");
     }
   }, {
     key: "isNothing",
@@ -345,6 +405,251 @@ var Nothing = function (_Maybe2) {
   return Nothing;
 }(Maybe);
 
+var Either = function () {
+  function Either() {
+    classCallCheck(this, Either);
+  }
+
+  createClass(Either, [{
+    key: 'join',
+    value: function join() {
+      if (this.value instanceof Either) {
+        return this.value.join();
+      }
+
+      return this;
+    }
+  }, {
+    key: 'map',
+    value: function map(fn) {
+      return Either.of(fn(this._val));
+    }
+  }, {
+    key: 'flatMap',
+    value: function flatMap(fn) {
+      return this.map(fn).join();
+    }
+  }, {
+    key: 'filter',
+    value: function filter() {
+      return this;
+    }
+  }, {
+    key: 'chain',
+    value: function chain(fn) {
+      return this.isRight ? fn(this._val) : this;
+    }
+  }, {
+    key: 'cata',
+    value: function cata(leftFn, rightFn) {
+      return this.isRight ? rightFn(this._val) : leftFn(this._val);
+    }
+  }, {
+    key: 'orElseFn',
+    value: function orElseFn() {
+      return this;
+    }
+  }, {
+    key: 'toMaybe',
+    value: function toMaybe() {
+      return this.cata(Maybe.None, Maybe.Just);
+    }
+  }, {
+    key: 'isRight',
+    get: function get$$1() {
+      return false;
+    }
+  }, {
+    key: 'isLeft',
+    get: function get$$1() {
+      return false;
+    }
+  }, {
+    key: 'value',
+    get: function get$$1() {
+      return this._val;
+    }
+  }], [{
+    key: 'of',
+    value: function of(x) {
+      return x !== undefined && x !== null && !(x instanceof Error) ? new _Right(x) : new _Left(x);
+    }
+  }, {
+    key: 'fromNullable',
+    value: function fromNullable(x) {
+      return Either.of(x);
+    }
+  }, {
+    key: 'Right',
+    value: function Right(x) {
+      return new _Right(x);
+    }
+  }, {
+    key: 'Left',
+    value: function Left(x) {
+      return new _Left(x);
+    }
+  }, {
+    key: 'try',
+    value: function _try(fn) {
+      try {
+        var result = fn();
+
+        return Either.of(result);
+      } catch (e) {
+        return Either.Left(e);
+      }
+    }
+  }]);
+  return Either;
+}();
+
+var _Right = function (_Either) {
+  inherits(_Right, _Either);
+
+  function _Right(val) {
+    classCallCheck(this, _Right);
+
+    var _this = possibleConstructorReturn(this, (_Right.__proto__ || Object.getPrototypeOf(_Right)).call(this));
+
+    _this._val = val;
+    return _this;
+  }
+
+  createClass(_Right, [{
+    key: 'filter',
+    value: function filter(fn) {
+      Either.of(fn(this._val) ? this._val : null);
+    }
+  }, {
+    key: 'orElse',
+    value: function orElse() {
+      return this._val;
+    }
+  }, {
+    key: 'asyncChain',
+    value: function () {
+      var _ref = asyncToGenerator(regeneratorRuntime.mark(function _callee(fn) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fn(this._val);
+
+              case 2:
+                return _context.abrupt('return', _context.sent);
+
+              case 3:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function asyncChain(_x) {
+        return _ref.apply(this, arguments);
+      }
+
+      return asyncChain;
+    }()
+  }, {
+    key: 'toString',
+    value: function toString() {
+      return 'Either.Right(' + this.value + ')';
+    }
+  }, {
+    key: 'isRight',
+    get: function get$$1() {
+      return true;
+    }
+  }]);
+  return _Right;
+}(Either);
+
+var _Left = function (_Either2) {
+  inherits(_Left, _Either2);
+
+  function _Left(val) {
+    classCallCheck(this, _Left);
+
+    var _this2 = possibleConstructorReturn(this, (_Left.__proto__ || Object.getPrototypeOf(_Left)).call(this));
+
+    _this2._val = val;
+    return _this2;
+  }
+
+  createClass(_Left, [{
+    key: 'orElse',
+    value: function orElse(other) {
+      return other;
+    }
+  }, {
+    key: 'orElseFn',
+    value: function orElseFn(fn) {
+      return fn(this._val);
+    }
+  }, {
+    key: 'toString',
+    value: function toString() {
+      return 'Either.Left(' + this._val + ')';
+    }
+  }, {
+    key: 'isLeft',
+    get: function get$$1() {
+      return true;
+    }
+  }]);
+  return _Left;
+}(Either);
+
+var IO = function () {
+  function IO(effect) {
+    classCallCheck(this, IO);
+
+    if (!isFunction(effect)) {
+      throw new Error('effect needs to be a function');
+    }
+
+    this._effect = effect;
+  }
+
+  createClass(IO, [{
+    key: 'map',
+    value: function map(fn) {
+      var _this = this;
+
+      return new IO(function () {
+        return fn(_this._effect());
+      });
+    }
+  }, {
+    key: 'chain',
+    value: function chain(fn) {
+      return fn(this._effect());
+    }
+  }, {
+    key: 'run',
+    value: function run() {
+      return this._effect();
+    }
+  }], [{
+    key: 'of',
+    value: function of(val) {
+      return new IO(function () {
+        return val;
+      });
+    }
+  }, {
+    key: 'from',
+    value: function from(fn) {
+      return new IO(fn);
+    }
+  }]);
+  return IO;
+}();
+
 var every = curry(function (fn, arr) {
   return isArray(arr) && isFunction(fn) ? arr.every(fn) : false;
 });
@@ -354,6 +659,10 @@ var associate = curry(function (prop, obj, val) {
 
   c[prop] = val;
   return c;
+});
+
+var altAssoc = curry(function (prop, val, obj) {
+  return associate(prop, obj, val);
 });
 
 var reduce = curry(function (init, fn, arr) {
@@ -372,6 +681,12 @@ var average = function average() {
   }
 
   return isArray(nums) && nums.length ? sum([].concat(nums)) / [].concat(nums).length : 0;
+};
+
+var both = function both(f, g) {
+  return function (x) {
+    return f(x) && g(x);
+  };
 };
 
 var compact = function compact(arr) {
@@ -428,9 +743,37 @@ var distinct = function distinct(arr) {
   return isArray(arr) ? [].concat(toConsumableArray(new Set(arr))) : [];
 };
 
-var filter = curry(function (func, arr) {
-  return !isFunction(func) ? isArray(arr) ? arr : [] : isArray(arr) ? arr.filter(func) : [];
+var distinctN = function distinctN() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return [].concat(toConsumableArray(new (Function.prototype.bind.apply(Set, [null].concat(args)))()));
+};
+
+var index = curry(function (func, arr) {
+  return isArray(arr) ? isFunction(func) ? [].concat(toConsumableArray(new Set(arr.map(func)))) : [].concat(toConsumableArray(new Set(arr))) : [];
 });
+
+var each = curry(function (fn, arr) {
+  return arr.forEach(fn);
+});
+
+var filter = curry(function (func, arr) {
+  return !isFunction(func) ? isArray(arr) ? clone(arr) : [] : isArray(arr) ? arr.filter(func) : [];
+});
+
+var find = curry(function (fn, x) {
+  return x.find(fn);
+});
+
+var index$1 = curry(function (fn, x) {
+  return x.findIndex(fn);
+});
+
+var flatten = reduce(function (acc, curr) {
+  return [].concat(toConsumableArray(acc), toConsumableArray(curr));
+}, []);
 
 var _groupBy = curry(function (func, arr) {
   return func != null && isArray(arr) ? arr.map(isFunction(func) ? func : function (val) {
@@ -442,7 +785,7 @@ var _groupBy = curry(function (func, arr) {
 });
 
 var map = curry(function (func, arr) {
-  return !isFunction(func) ? isArray(arr) ? clone(arr) : [] : isArray(arr) ? clone(arr.map(func)) : [];
+  return !isFunction(func) ? isArray(arr) ? clone(arr) : [] : isArray(arr) ? arr.map(func) : [];
 });
 
 function select(arr, obj) {
@@ -459,7 +802,7 @@ var sort = curry(function (fn, arr) {
   return !isFunction(fn) ? isArray(arr) ? clone(arr) : [] : isArray(arr) ? clone(arr).sort(fn) : [];
 });
 
-var index = (function (arr) {
+var index$2 = (function (arr) {
   var _array = arr || [];
 
   return {
@@ -490,7 +833,7 @@ var index = (function (arr) {
   };
 });
 
-var index$1 = curry(function (a, b) {
+var index$3 = curry(function (a, b) {
   var s = isArray(b) ? new Set(b) : new Set();
 
   return isArray(a) ? a.filter(function (x) {
@@ -498,17 +841,21 @@ var index$1 = curry(function (a, b) {
   }) : [].concat(toConsumableArray(s));
 });
 
-var index$2 = curry(function (sep, arr) {
+var index$4 = curry(function (sep, arr) {
   return arr.join(sep);
 });
 
-var index$3 = curry(function (value, arr) {
+var index$5 = curry(function (a, b) {
+  return Object.assign({}, clone(a), clone(b));
+});
+
+var index$6 = curry(function (value, arr) {
   return isArray(arr) ? arr.reduce(function (acc, val) {
     return val === value ? acc + 1 : acc;
   }, 0) : 0;
 });
 
-var index$4 = (function (fn) {
+var index$7 = (function (fn) {
   for (var _len = arguments.length, partialArgs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     partialArgs[_key - 1] = arguments[_key];
   }
@@ -522,7 +869,7 @@ var index$4 = (function (fn) {
   };
 });
 
-var index$5 = (function () {
+var index$8 = (function () {
   for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -534,11 +881,11 @@ var index$5 = (function () {
   });
 });
 
-var index$6 = (function (arr) {
+var index$9 = (function (arr) {
   return !isArray(arr) || !arr.length ? [] : clone(arr).slice(0, arr.length - 1);
 });
 
-var index$7 = (function (func) {
+var index$10 = (function (func) {
   return function () {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -552,27 +899,27 @@ var index$7 = (function (func) {
   };
 });
 
-var index$8 = curry(function (prop, obj) {
+var index$11 = curry(function (prop, obj) {
   return clone(obj[prop]);
 });
 
-var index$9 = curry(function (val, arr) {
+var index$12 = curry(function (val, arr) {
   return isArray(arr) ? [].concat(toConsumableArray(clone(arr)), [val]) : [val];
 });
 
-var index$10 = curry(function (init, fn, arr) {
+var index$13 = curry(function (init, fn, arr) {
   return !isFunction(fn) ? isArray(arr) ? clone(arr) : [] : isArray(arr) ? clone(arr.reduceRight(fn, init)) : [];
 });
 
-var index$11 = (function (arr) {
+var index$14 = (function (arr) {
   return isArray(arr) ? clone(arr).reverse() : [];
 });
 
-var index$12 = (function (arr) {
+var index$15 = (function (arr) {
   return !isArray(arr) || !arr.length ? [] : clone(arr).slice(1);
 });
 
-var index$13 = (function (_ref) {
+var index$16 = (function (_ref) {
   var _ref2 = toArray(_ref),
       arr = _ref2.slice(0);
 
@@ -590,15 +937,15 @@ var index$13 = (function (_ref) {
   return carr;
 });
 
-var index$14 = curry(function (start, end, arr) {
+var index$17 = curry(function (start, end, arr) {
   return isArray(arr) ? clone(arr).slice(start, end) : [];
 });
 
-var index$15 = curry(function (fn, arr) {
+var some = curry(function (fn, arr) {
   return isArray(arr) && isFunction(fn) ? arr.some(fn) : false;
 });
 
-var index$16 = (function () {
+var index$18 = (function () {
   var _ref;
 
   for (var _len = arguments.length, nums = Array(_len), _key = 0; _key < _len; _key++) {
@@ -610,7 +957,7 @@ var index$16 = (function () {
   }, (_ref = []).concat.apply(_ref, nums)) : 0;
 });
 
-var index$17 = curry(function (a, b) {
+var index$19 = curry(function (a, b) {
   var sA = isArray(a) ? new Set(a) : new Set();
   var sB = isArray(b) ? new Set(b) : new Set();
 
@@ -621,11 +968,11 @@ var index$17 = curry(function (a, b) {
   })));
 });
 
-var index$18 = curry(function (a, b) {
+var index$20 = curry(function (a, b) {
   return Array.from(new Set([].concat(toConsumableArray(isArray(a) ? a : []), toConsumableArray(isArray(b) ? b : []))));
 });
 
-var index$19 = curry(function (val, arr) {
+var index$21 = curry(function (val, arr) {
   return isArray(arr) ? [val].concat(toConsumableArray(clone(arr))) : [val];
 });
 
@@ -634,6 +981,7 @@ exports.isArray = isArray;
 exports.isFunction = isFunction;
 exports.isObject = isObject;
 exports.isString = isString;
+exports.isNumber = isNumber;
 exports.not = not;
 exports.tap = tap;
 exports.A = A;
@@ -649,9 +997,15 @@ exports.T = T;
 exports.thrush = T;
 exports.applyTo = T;
 exports.Maybe = Maybe;
+exports.Either = Either;
+exports.IO = IO;
 exports.all = every;
 exports.associate = associate;
+exports.assoc = associate;
+exports.altAssociate = altAssoc;
+exports.altAssoc = altAssoc;
 exports.average = average;
+exports.both = both;
 exports.compact = compact;
 exports.compose = compose;
 exports.concat = concat;
@@ -660,34 +1014,41 @@ exports.curry = curry;
 exports.deviation = deviation;
 exports.difference = difference;
 exports.distinct = distinct;
+exports.distinctN = distinctN;
+exports.distinctFn = index;
+exports.each = each;
 exports.every = every;
 exports.filter = filter;
-exports.from = index;
+exports.find = find;
+exports.findIndex = index$1;
+exports.flatten = flatten;
+exports.from = index$2;
 exports.groupBy = _groupBy;
-exports.intersection = index$1;
-exports.join = index$2;
+exports.intersection = index$3;
+exports.join = index$4;
 exports.map = map;
-exports.occurrence = index$3;
-exports.partial = index$4;
-exports.pipe = index$5;
-exports.pop = index$6;
-exports.promisify = index$7;
-exports.property = index$8;
-exports.push = index$9;
+exports.merge = index$5;
+exports.occurrence = index$6;
+exports.partial = index$7;
+exports.pipe = index$8;
+exports.pop = index$9;
+exports.promisify = index$10;
+exports.property = index$11;
+exports.push = index$12;
 exports.reduce = reduce;
-exports.reduceRight = index$10;
-exports.reverse = index$11;
+exports.reduceRight = index$13;
+exports.reverse = index$14;
 exports.select = _select;
-exports.shift = index$12;
-exports.shuffle = index$13;
-exports.slice = index$14;
-exports.some = index$15;
+exports.shift = index$15;
+exports.shuffle = index$16;
+exports.slice = index$17;
+exports.some = some;
 exports.sort = sort;
 exports.sum = sum;
-exports.sumN = index$16;
-exports.symmetricDifference = index$17;
-exports.union = index$18;
-exports.unshift = index$19;
+exports.sumN = index$18;
+exports.symmetricDifference = index$19;
+exports.union = index$20;
+exports.unshift = index$21;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

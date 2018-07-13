@@ -75,7 +75,7 @@ test('returns true for function', t => {
 });
 
 test('returns false for array', t => {
-  const val = [ 1, 2, 3 ];
+  const val = [1, 2, 3];
   const actual = isFunction(val);
 
   t.false(actual);

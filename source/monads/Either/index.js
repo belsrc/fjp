@@ -1,9 +1,11 @@
-import Maybe from './Maybe';
+import Maybe from './../Maybe';
 
 class Either {
   static of(x) {
     // eslint-disable-next-line no-use-before-define
-    return x !== undefined && x !== null && !(x instanceof Error) ? new Right(x) : new Left(x);
+    return x !== undefined && x !== null && !(x instanceof Error) ?
+      new Right(x) : // eslint-disable-line no-use-before-define
+      new Left(x); // eslint-disable-line no-use-before-define
   }
 
   static fromNullable(x) {

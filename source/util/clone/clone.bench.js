@@ -14,48 +14,35 @@ const data = {
   email: 'alana.hobbs@comcur.com',
   phone: '+1 (945) 414-3657',
   address: '577 Moore Street, Dante, Utah, 6132',
-  tags: [
-    'adipisicing',
-    'mollit',
-    'in',
-    'officia',
-    'sit',
+  tags: ['adipisicing', 'mollit', 'in', 'officia', 'sit'],
+  range: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  friends: [
+    {
+      id: 0,
+      name: 'Constance Noble',
+    },
+    {
+      id: 1,
+      name: 'Sloan Gray',
+    },
+    {
+      id: 2,
+      name: 'Gardner Parsons',
+    },
   ],
-  range: [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-  ],
-  friends: [ {
-    id: 0,
-    name: 'Constance Noble',
-  }, {
-    id: 1,
-    name: 'Sloan Gray',
-  }, {
-    id: 2,
-    name: 'Gardner Parsons',
-  } ],
 };
 
 function recursiveClone(o) {
   let i;
 
-  if(!o || typeof o !== 'object') {
+  if (!o || typeof o !== 'object') {
     return o;
   }
 
-  if(Object.prototype.toString.apply(o) === '[object Array]') {
+  if (Object.prototype.toString.apply(o) === '[object Array]') {
     const arr = [];
 
-    for(i = 0; i < o.length; i += 1) {
+    for (i = 0; i < o.length; i += 1) {
       arr[i] = recursiveClone(o[i]);
     }
 
@@ -64,8 +51,8 @@ function recursiveClone(o) {
 
   const obj = {};
 
-  for(i in o) {
-    if(o.hasOwnProperty(i)) {
+  for (i in o) {
+    if (o.hasOwnProperty(i)) {
       obj[i] = recursiveClone(o[i]);
     }
   }
@@ -75,36 +62,36 @@ function recursiveClone(o) {
 
 /* eslint-disable no-return-assign, no-sequences */
 function es6PrimLast(val) {
-  return Object.prototype.toString.apply(val) === '[object Array]' ?
-    val.map(i => es6PrimLast(i)) :
-    val != null && typeof val === 'object' ?
-      Object.keys(val).reduce(
-        (acc, curr) => (acc[curr] = es6PrimLast(val[curr]), acc),
-        {}
-      ) :
-      val;
+  return Object.prototype.toString.apply(val) === '[object Array]'
+    ? val.map(i => es6PrimLast(i))
+    : val != null && typeof val === 'object'
+      ? Object.keys(val).reduce(
+          (acc, curr) => ((acc[curr] = es6PrimLast(val[curr])), acc),
+          {}
+        )
+      : val;
 }
 
 function es6PrimLastIsArray(val) {
-  return Array.isArray(val) ?
-    val.map(i => es6PrimLastIsArray(i)) :
-    val != null && typeof val === 'object' ?
-      Object.keys(val).reduce(
-        (acc, curr) => (acc[curr] = es6PrimLastIsArray(val[curr]), acc),
-        {}
-      ) :
-      val;
+  return Array.isArray(val)
+    ? val.map(i => es6PrimLastIsArray(i))
+    : val != null && typeof val === 'object'
+      ? Object.keys(val).reduce(
+          (acc, curr) => ((acc[curr] = es6PrimLastIsArray(val[curr])), acc),
+          {}
+        )
+      : val;
 }
 
 function es6PrimitiveFirst(val) {
-  return !val || typeof val !== 'object' ?
-    val :
-    Object.prototype.toString.apply(val) === '[object Array]' ?
-      val.map(i => es6PrimitiveFirst(i)) :
-      Object.keys(val).reduce(
-        (acc, curr) => (acc[curr] = es6PrimitiveFirst(val[curr]), acc),
-        {}
-      );
+  return !val || typeof val !== 'object'
+    ? val
+    : Object.prototype.toString.apply(val) === '[object Array]'
+      ? val.map(i => es6PrimitiveFirst(i))
+      : Object.keys(val).reduce(
+          (acc, curr) => ((acc[curr] = es6PrimitiveFirst(val[curr])), acc),
+          {}
+        );
 }
 /* eslint-enable no-return-assign, no-sequences */
 
