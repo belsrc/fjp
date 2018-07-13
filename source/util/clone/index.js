@@ -5,6 +5,10 @@ function clone(x) {
     return x;
   }
 
+  if(x instanceof Date) {
+    return new Date(x);
+  }
+
   if(Array.isArray(x)) {
     const arr = [];
 

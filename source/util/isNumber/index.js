@@ -8,6 +8,6 @@
  * isNumber(0x2F)  // true
  * isNumber('foo bar')  // false
  */
-const isNumber = n => typeof n === 'number' && !isNaN(n) && isFinite(n);
+const isNumber = n => !isNaN(parseFloat(n)) && isFinite(n);
 
 export default isNumber;

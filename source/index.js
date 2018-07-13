@@ -24,11 +24,17 @@ export { default as applyTo } from './combinators/T';
 
 // --- Monads --- //
 export { default as Maybe } from './monads/Maybe';
+export { default as Either } from './monads/Either';
+export { default as IO } from './monads/IO';
 
 // --- Functions --- //
 export { default as all } from './every';
 export { default as associate } from './associate';
+export { default as assoc } from './associate';
+export { default as altAssociate } from './altAssociate';
+export { default as altAssoc } from './alt-associate';
 export { default as average } from './average';
+export { default as both } from './both';
 export { default as compact } from './compact';
 export { default as compose } from './compose';
 export { default as concat } from './concat';
@@ -39,17 +45,20 @@ export { default as curry } from './curry';
 export { default as deviation } from './deviation';
 export { default as difference } from './difference';
 export { default as distinct } from './distinct';
-
-// export { default as each } from './each';
+export { default as distinctN } from './distinctN';
+export { default as distinctFn } from './distinctFn';
+export { default as each } from './each';
 export { default as every } from './every';
 export { default as filter } from './filter';
-
-// export { default as find } from './find';
+export { default as find } from './find';
+export { default as findIndex } from './findIndex';
+export { default as flatten } from './flatten';
 export { default as from } from './from';
 export { default as groupBy } from './groupBy';
 export { default as intersection } from './intersection';
 export { default as join } from './join';
 export { default as map } from './map';
+export { default as merge } from './merge';
 export { default as occurrence } from './occurrence';
 export { default as partial } from './partial';
 export { default as pipe } from './pipe';

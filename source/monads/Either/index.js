@@ -1,9 +1,9 @@
-import Maybe from './../Maybe';
+import Maybe from './Maybe';
 
 class Either {
   static of(x) {
     // eslint-disable-next-line no-use-before-define
-    return x !== undefined && x !== null ? new Right(x) : new Left(x);
+    return x !== undefined && x !== null && !(x instanceof Error) ? new Right(x) : new Left(x);
   }
 
   static fromNullable(x) {
@@ -40,16 +40,32 @@ class Either {
     return false;
   }
 
-  map() {
+  get value() {
+    return this._val;
+  }
+
+  join() {
+    if(this.value instanceof Either) {
+      return this.value.join();
+    }
+
     return this;
+  }
+
+  map(fn) {
+    return Either.of(fn(this._val));
+  }
+
+  flatMap(fn) {
+    return this.map(fn).join();
   }
 
   filter() {
     return this;
   }
 
-  chain() {
-    return this;
+  chain(fn) {
+    return this.isRight ? fn(this._val) : this;
   }
 
   cata(leftFn, rightFn) {
@@ -71,16 +87,8 @@ class Right extends Either {
     this._val = val;
   }
 
-  get value() {
-    return this._val;
-  }
-
   get isRight() {
     return true;
-  }
-
-  map(fn) {
-    return Either.of(fn(this._val));
   }
 
   filter(fn) {
@@ -91,8 +99,8 @@ class Right extends Either {
     return this._val;
   }
 
-  chain(fn) {
-    return fn(this._val);
+  async asyncChain(fn) {
+    return await fn(this._val);
   }
 
   toString() {
@@ -104,10 +112,6 @@ class Left extends Either {
   constructor(val) {
     super();
     this._val = val;
-  }
-
-  get value() {
-    throw new TypeError("Can't extract the value of a Left");
   }
 
   get isLeft() {
