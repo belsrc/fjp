@@ -1,6 +1,6 @@
 {
   "name": "fjp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "functional javascript playground",
   "module": "es/index.js",
   "main": "cjs/index.js",
@@ -26,8 +26,9 @@
     "readme": "node doc/docs.js",
     "clean": "prettier --write --config .prettierrc \"source/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"source/**/*.js\"",
     "release:first": "npm run build && npm run readme && standard-version --first-release",
-    "release": "npm run build && npm run readme && standard-version --no-verify",
-    "release:full": "npm run release && git push --follow-tags origin master && npm publish"
+    "release": "npm run build && npm run readme",
+    "release:auto": "npm run release && standard-version --no-verify && git push --follow-tags origin master && npm publish",
+    "release:minor": "npm run release && standard-version --no-verify --release-as minor && git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
