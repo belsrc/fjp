@@ -12,7 +12,11 @@ import isArray from './../util/isArray';
  */
 const filter = curry((func, arr) =>
   !isFunction(func) ?
-    isArray(arr) ? clone(arr) : [] :
-    isArray(arr) ? arr.filter(func) : []);
+    isArray(arr) ?
+      clone(arr) :
+      [] :
+    isArray(arr) ?
+      arr.filter(func) :
+      []);
 
 export default filter;

@@ -14,6 +14,8 @@ import curry from './../curry';
 const concat = curry((a, b) =>
   isArray(a) && isArray(b) ?
     a.concat(b) :
-    isString(a) && isString(b) ? `${ a }${ b }` : []);
+    isString(a) && isString(b) ?
+      `${ a }${ b }` :
+      []);
 
 export default concat;

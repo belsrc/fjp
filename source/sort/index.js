@@ -5,5 +5,9 @@ import clone from './../util/clone';
 
 export default curry((fn, arr) =>
   !isFunction(fn) ?
-    isArray(arr) ? clone(arr) : [] :
-    isArray(arr) ? clone(arr).sort(fn) : []);
+    isArray(arr) ?
+      clone(arr) :
+      [] :
+    isArray(arr) ?
+      clone(arr).sort(fn) :
+      []);
