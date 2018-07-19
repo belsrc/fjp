@@ -729,9 +729,9 @@
     return x.findIndex(fn);
   });
 
-  var flatten = reduce(function (acc, curr) {
+  var flatten = reduce([], function (acc, curr) {
     return [].concat(toConsumableArray(acc), toConsumableArray(curr));
-  }, []);
+  });
 
   var _groupBy = curry(function (func, arr) {
     return func != null && isArray(arr) ? arr.map(isFunction(func) ? func : function (val) {

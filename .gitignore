@@ -60,3 +60,4 @@ playground/
 coverage.lcov
 es/
 cjs/
+test.js
