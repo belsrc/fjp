@@ -6,7 +6,10 @@
           "modules": false
         }]
       ],
-      "plugins": ["annotate-pure-calls"]
+      "plugins": [
+        "transform-runtime",
+        "annotate-pure-calls"
+      ]
     },
     "cjs": {
       "presets": [
@@ -19,6 +22,7 @@
       ],
       "plugins": [
         "transform-es2015-modules-commonjs",
+        "transform-runtime",
         "annotate-pure-calls"
       ]
     },

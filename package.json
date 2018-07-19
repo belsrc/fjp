@@ -4,13 +4,9 @@
   "description": "functional javascript playground",
   "module": "es/index.js",
   "main": "cjs/index.js",
-  "unpkg": "dist/fjp.min.js",
-  "jsdelivr": "dist/fjp.min.js",
-  "browser": "dist/fjp.min.js",
   "files": [
     "es",
-    "cjs",
-    "dist"
+    "cjs"
   ],
   "scripts": {
     "check": "npm-check -u",
@@ -20,8 +16,6 @@
     "coverage": "nyc --reporter=lcov npm run unit && nyc report && codecov",
     "build:es": "cross-env BABEL_ENV=es babel source --out-dir es --ignore **/*.test.js,**/*.bench.js",
     "build:cjs": "cross-env BABEL_ENV=cjs babel source --out-dir cjs --ignore **/*.test.js,**/*.bench.js",
-    "build:umd": "cross-env NODE_ENV=development BABEL_ENV=umd rollup -c -o dist/fjp.js",
-    "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=umd rollup -c -o dist/fjp.min.js",
     "build": "npm-run-all coverage clean build:*",
     "readme": "node doc/docs.js",
     "clean": "prettier --write --config .prettierrc \"source/**/*.js\" && eslint -c .eslintrc --fix --color --ignore-path .eslintignore \"source/**/*.js\"",
@@ -48,6 +42,7 @@
     "babel-plugin-annotate-pure-calls": "0.3.0",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
     "benchmark": "2.1.4",
