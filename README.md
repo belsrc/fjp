@@ -83,6 +83,9 @@ you can optionally pass the number of arguments to the second parameter arity.</
 <dt><a href="#find">find()</a></dt>
 <dd><p>Finds the first element that satisfies the given test func.</p>
 </dd>
+<dt><a href="#flatten">flatten()</a></dt>
+<dd><p>Flattens single nested array.</p>
+</dd>
 <dt><a href="#isArray">isArray()</a></dt>
 <dd><p>Determines if the given value is an array.</p>
 </dd>
@@ -326,6 +329,18 @@ Finds the first element that satisfies the given test func.
 **Example**  
 ```js
 find(x => x.score === 5, [{score: 1}, {score: 2}, {score: 5}, {score: 6}, {score: 7}]) // {score: 5}
+```
+<a name="flatten"></a>
+
+## flatten()
+Flattens single nested array.
+
+**Kind**: global function  
+**Signature**: flatten :: [a] -> [a]  
+**Example**  
+```js
+flatten([[ 1, 2 ], [ 3, 4 ]];); // [ 1, 2, 3, 4 ]
+flatten(null) // []
 ```
 <a name="isArray"></a>
 

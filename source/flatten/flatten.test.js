@@ -9,14 +9,14 @@ test('returns empty array for null arg', t => {
 });
 
 test('returns array', t => {
-  const arr = [[ 1, 2 ], [ 3, 4 ]];
+  const arr = [[1, 2], [3, 4]];
   const actual = flatten(arr);
 
   t.true(Array.isArray(actual));
 });
 
 test('returns correct value', t => {
-  const arr = [[ 1, 2 ], [ 3, 4 ]];
+  const arr = [[1, 2], [3, 4]];
   const expected = [1, 2, 3, 4];
   const actual = flatten(arr);
 
