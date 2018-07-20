@@ -10,7 +10,7 @@ coverage:
   precision: 5
 
 codecov:
-  branch: develop
+  branch: master
 
 parsers:
   javascript:
