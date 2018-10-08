@@ -77,6 +77,7 @@ export { default as some } from './some';
 export { default as sort } from './sort';
 
 // export { default as splice } from './splice';
+export { default as subset } from './subset';
 export { default as sum } from './sum';
 export { default as sumN } from './sumN';
 export { default as symmetricDifference } from './symmetricDifference';
