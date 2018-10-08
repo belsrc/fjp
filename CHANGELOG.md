@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/belsrc/fjp/compare/v0.2.2...v0.2.3) (2018-10-08)
+
+
+### Bug Fixes
+
+* add subset to the index export ([9a16582](https://github.com/belsrc/fjp/commit/9a16582))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/belsrc/fjp/compare/v0.2.1...v0.2.2) (2018-07-19)
 
