@@ -1,6 +1,6 @@
 {
   "name": "fjp",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "functional javascript playground",
   "engines": {
     "node": ">=8.11.0"
