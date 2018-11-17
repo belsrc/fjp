@@ -11,6 +11,7 @@ coverage:
 
 codecov:
   branch: master
+  token: ecfc093c-04ca-4ec3-aef4-0295a9d02f9e
 
 parsers:
   javascript:
