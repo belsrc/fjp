@@ -8,4 +8,5 @@ import clone from './../util/clone';
 // unshift(0)
 // >> [0]
 //
-export default curry((val, arr) => isArray(arr) ? [ val, ...clone(arr) ] : [val]);
+export default curry((val, arr) =>
+  isArray(arr) ? [ val, ...clone(arr) ] : [val]);
