@@ -1,7 +1,8 @@
 /**
  * Negates the given boolean-like value.
- * @signature not :: Boolean -> Boolean
  * @func
+ * @signature not :: Boolean -> Boolean
+ * @arg {Boolean} a
  * @example
  * not(true); // false
  * not(false); // true

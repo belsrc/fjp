@@ -1,7 +1,8 @@
 /**
  * Determines if the given value is a number.
- * @signature isNumber :: a -> Boolean
  * @func
+ * @signature isNumber :: a -> Boolean
+ * @arg {Number} n
  * @example
  * isNumber(42)  // true
  * isNumber(8e5)  // true

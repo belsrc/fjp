@@ -1,10 +1,11 @@
 /**
  * Get the remaining elements of the array minus the head, or first, element.
- * @arg {Array} arr
- * @signature head :: [a] -> [a]
  * @func
+ * @signature tail :: [a] -> [a]
+ * @arg {Array} arr
  * @example
- * head([1, 2, 3, 4, 5]) // [2, 3, 4, 5]
+ * tail([1, 2, 3, 4, 5])
+ * // [2, 3, 4, 5]
  */
 const tail = ([ x, ...y ]) => y; // eslint-disable-line no-unused-vars
 

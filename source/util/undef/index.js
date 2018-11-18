@@ -1,8 +1,8 @@
 /**
  * Determines if the given value is undefined.
- * @arg {Mixed} x
- * @signature undef :: a -> Boolean
  * @func
+ * @signature undef :: a -> Boolean
+ * @arg {Mixed} x
  * @example
  * undef('foo bar')  // false
  * undef(undefined)  // true

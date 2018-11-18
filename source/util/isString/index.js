@@ -1,7 +1,8 @@
 /**
  * Determines if the given value is a string.
- * @signature isString :: a -> Boolean
  * @func
+ * @signature isString :: a -> Boolean
+ * @arg {String} a
  * @example
  * isString('foo bar')  // true
  * isString({ a: 'b' })  // false

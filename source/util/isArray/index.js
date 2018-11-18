@@ -1,7 +1,8 @@
 /**
  * Determines if the given value is an array.
- * @signature isArray :: a -> Boolean
  * @func
+ * @signature isArray :: a -> Boolean
+ * @arg {Array} arr
  * @example
  * isArray([1, 2, 3])  // true
  * isArray({ a: 'b' })  // false

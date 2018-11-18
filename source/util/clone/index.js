@@ -1,3 +1,12 @@
+/**
+ * Clones the given object.
+ * @func
+ * @signature clone :: Object -> Object
+ * @arg {Object} x
+ * @example
+ * clone({a: 1, b: 2})
+ * // {a: 1, b: 2}
+ */
 function clone(x) {
   let i;
 

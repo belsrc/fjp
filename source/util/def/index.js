@@ -1,8 +1,8 @@
 /**
  * Determines if the given value is defined.
- * @arg {Mixed} x
- * @signature def :: a -> Boolean
  * @func
+ * @signature def :: a -> Boolean
+ * @arg {Mixed} x
  * @example
  * def('foo bar')  // true
  * def(undefined)  // false

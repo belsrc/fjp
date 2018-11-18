@@ -1,7 +1,8 @@
 /**
  * Determines if the given value is a function.
- * @signature isFunction :: a -> Boolean
  * @func
+ * @signature isFunction :: a -> Boolean
+ * @arg {Function} fn
  * @example
  * isFunction(() => {})  // true
  * isFunction([1, 2, 3])  // false
