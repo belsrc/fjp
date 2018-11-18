@@ -1,10 +1,11 @@
 /**
  * Get the first value of the given array.
- * @arg {Array} arr
- * @signature head :: [a] -> a
  * @func
+ * @signature head :: [a] -> a
+ * @arg {Array} arr
  * @example
- * head([1, 2, 3, 4, 5]) // [1]
+ * head([1, 2, 3, 4, 5])
+ * // [1]
  */
 const head = ([x]) => x;
 
