@@ -2,7 +2,7 @@
   "env": {
     "es": {
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "modules": false
         }]
       ],
@@ -10,7 +10,7 @@
     },
     "cjs": {
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "targets": {
             "node": "6.5"
           },
@@ -24,14 +24,14 @@
     },
     "umd": {
       "presets": [
-        ["env", {
+        ["@babel/preset-env", {
           "targets": {
-            "browsers": ["ie >= 11"]
+            "ie": "11"
           },
           "modules": false
         }]
       ],
-      "plugins": ["external-helpers"],
+      "plugins": ["@babel/plugin-external-helpers"],
       "comments": false
     }
   }
