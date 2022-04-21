@@ -1,5 +1,4 @@
-import 'babel-core/register';
-import test from 'ava';
-import from from './index';
+import '@babel/register';
+import fromChain from './index';
 
 test.todo('these tests need to be written');

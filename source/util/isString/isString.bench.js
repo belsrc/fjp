@@ -1,4 +1,4 @@
-import 'babel-core/register';
+import '@babel/register';
 import isString from './index';
 
 const data = 'foo bar';

@@ -1,4 +1,4 @@
-import 'babel-core/register';
+import '@babel/register';
 import isNumber from './index';
 
 const data = 43534;
