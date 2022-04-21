@@ -1,7 +1,9 @@
+/* eslint-disable import/order */
 import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from "rollup-plugin-terser";
-const pkg = require('./package.json');
+import { terser } from 'rollup-plugin-terser';
+
+const pkg = require('./package');
 
 const config = {
   input: 'source/index.js',
@@ -14,6 +16,7 @@ const config = {
 };
 
 if(process.env.NODE_ENV === 'production') {
+  // eslint-disable-next-line fp-jxl/no-unused-expression
   config.plugins.push(terser());
 }
 

@@ -1,6 +1,6 @@
-import curry from './../curry';
-import isFunction from './../util/isFunction';
-import isArray from './../util/isArray';
+import curry from '../curry';
+import isFunction from '../util/isFunction';
+import isArray from '../util/isArray';
 
 /**
  * Determines if all element in an array satisfy the given test function

@@ -1,4 +1,4 @@
-import isArray from './../util/isArray';
+import isArray from '../util/isArray';
 
 /**
  * Removes falsey values from an array.

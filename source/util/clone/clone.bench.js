@@ -63,35 +63,26 @@ function recursiveClone(o) {
 /* eslint-disable no-return-assign, no-sequences */
 function es6PrimLast(val) {
   return Object.prototype.toString.apply(val) === '[object Array]'
-    ? val.map(i => es6PrimLast(i))
+    ? val.map((i) => es6PrimLast(i))
     : val != null && typeof val === 'object'
-      ? Object.keys(val).reduce(
-          (acc, curr) => ((acc[curr] = es6PrimLast(val[curr])), acc),
-          {}
-        )
-      : val;
+    ? Object.keys(val).reduce((acc, curr) => ((acc[curr] = es6PrimLast(val[curr])), acc), {})
+    : val;
 }
 
 function es6PrimLastIsArray(val) {
   return Array.isArray(val)
-    ? val.map(i => es6PrimLastIsArray(i))
+    ? val.map((i) => es6PrimLastIsArray(i))
     : val != null && typeof val === 'object'
-      ? Object.keys(val).reduce(
-          (acc, curr) => ((acc[curr] = es6PrimLastIsArray(val[curr])), acc),
-          {}
-        )
-      : val;
+    ? Object.keys(val).reduce((acc, curr) => ((acc[curr] = es6PrimLastIsArray(val[curr])), acc), {})
+    : val;
 }
 
 function es6PrimitiveFirst(val) {
   return !val || typeof val !== 'object'
     ? val
     : Object.prototype.toString.apply(val) === '[object Array]'
-      ? val.map(i => es6PrimitiveFirst(i))
-      : Object.keys(val).reduce(
-          (acc, curr) => ((acc[curr] = es6PrimitiveFirst(val[curr])), acc),
-          {}
-        );
+    ? val.map((i) => es6PrimitiveFirst(i))
+    : Object.keys(val).reduce((acc, curr) => ((acc[curr] = es6PrimitiveFirst(val[curr])), acc), {});
 }
 /* eslint-enable no-return-assign, no-sequences */
 

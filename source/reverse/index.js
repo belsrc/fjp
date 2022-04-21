@@ -1,4 +1,6 @@
-import isArray from './../util/isArray';
-import clone from './../util/clone';
+import isArray from '../util/isArray';
+import clone from '../util/clone';
 
-export default arr => isArray(arr) ? clone(arr).reverse() : [];
+const reverse = arr => isArray(arr) ? clone(arr).reverse() : [];
+
+export default reverse;

@@ -1,4 +1,4 @@
-import curry from './../curry';
+import curry from '../curry';
 
 // Returns the standard deviation of an array of numbers.
 //

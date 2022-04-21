@@ -8,6 +8,9 @@
  * const addOneTimeTen = compose(timeTen, addOne);
  * const result = addOneTimeTen(9); // 100
  */
-const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
+const compose = (...fns) =>
+  fns.reduce((f, g) =>
+    (...args) =>
+      f(g(...args)));
 
 export default compose;

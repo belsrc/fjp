@@ -1,5 +1,5 @@
-import isArray from './../util/isArray';
-import clone from './../util/clone';
+import isArray from '../util/isArray';
+import clone from '../util/clone';
 
 // May be slightly unconventional but given you can only return one value
 // which of the two things that pop does is more important?
@@ -15,4 +15,6 @@ import clone from './../util/clone';
 // shift();
 // >> []
 //
-export default arr => !isArray(arr) || !arr.length ? [] : clone(arr).slice(1);
+const shift = arr => !isArray(arr) || !arr.length ? [] : clone(arr).slice(1);
+
+export default shift;

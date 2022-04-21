@@ -16,14 +16,8 @@ module.exports = {
     ['val & constructor (no class)']() {
       return data && data.constructor === Object;
     },
-    ['val & typeof (no class)']() {
-      return data && typeof value === 'object'; // Auto fails since it picks up other types
-    },
     ['prototype.toString (rambda)']() {
       return Object.prototype.toString.call(data) === '[object Object]';
-    },
-    ['obj === Object (no class)']() {
-      return data === Object(data); // Auto fails since it picks up other types
     },
     ['instanceof & constructor (no class)']() {
       return data instanceof Object && data.constructor === Object;
@@ -34,29 +28,26 @@ module.exports = {
       return data != null && (type === 'object' || type === 'function');
     },
     ['fjp.isObject']() {
-      return isObject(data);
+      // isObject(data);
+      return data != null && !Array.isArray(data) && typeof data === 'object';
     },
   },
 };
 
 /*
 ┌────────────────────────────────────────┬────────────────────┬────────────────────┐
-│ isObject                               │ Hertz              │ Margin of Error    │
+│ isObject                                   │ Hertz                │ Count                │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ val & typeof & constructor (no class)  │ 861,778,373        │ 0.19%              │
+│ val & typeof & constructor (no class)      │ 1,019,293,582        │ 51,708,554           │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ val & constructor (no class)           │ 863,181,655        │ 0.19%              │
+│ val & constructor (no class)               │ 1,016,279,325        │ 52,039,242           │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ val & typeof (no class)                │ 135,546,796        │ 0.30%              │
+│ prototype.toString (rambda)                │ 115,277,008          │ 10,372,418           │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ prototype.toString (rambda)            │ 187,472,138        │ 0.34%              │
+│ instanceof & constructor (no class)        │ 722,372,920          │ 51,891,449           │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ obj === Object (no class)              │ 143,007,606        │ 0.30%              │
+│ lodash (includes array & func)             │ 1,009,107,326        │ 51,418,166           │
 ├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ instanceof & constructor (no class)    │ 862,365,786        │ 0.14%              │
-├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ lodash (includes array & func)         │ 863,629,474        │ 0.12%              │
-├────────────────────────────────────────┼────────────────────┼────────────────────┤
-│ isObject                               │ 862,942,577        │ 0.14%              │
+│ fjp.isObject                               │ 195,990,243          │ 50,603,911           │
 └────────────────────────────────────────┴────────────────────┴────────────────────┘
  */
