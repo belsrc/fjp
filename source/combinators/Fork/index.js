@@ -1,4 +1,4 @@
-import curry from './../../curry';
+import curry from '../../curry';
 
 /**
  * Takes a joiner func, and two other funcs and a value. The value is given to both funcs and the

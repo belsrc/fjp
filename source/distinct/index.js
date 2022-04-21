@@ -1,4 +1,4 @@
-import isArray from './../util/isArray';
+import isArray from '../util/isArray';
 
 /**
  * Returns all of the distinct values of an array.

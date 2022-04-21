@@ -1,5 +1,6 @@
-import curry from './../curry';
-import clone from './../util/clone';
+/* eslint-disable fp-jxl/no-mutation */
+import curry from '../curry';
+import clone from '../util/clone';
 
 /**
  * Sets the given property and value on the object. Returning a new object.

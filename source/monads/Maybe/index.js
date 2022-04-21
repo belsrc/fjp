@@ -1,3 +1,5 @@
+/* eslint-disable fp-jxl/no-this, fp-jxl/no-class, fp-jxl/no-mutation */
+
 class Maybe {
   static of(x) {
     // eslint-disable-next-line no-use-before-define
@@ -52,6 +54,7 @@ class Maybe {
 }
 
 class Just extends Maybe {
+  // eslint-disable-next-line fp-jxl/no-nil
   constructor(val) {
     super();
     this._val = val;
@@ -86,7 +89,8 @@ class Just extends Maybe {
   }
 
   filter(fn) {
-    Maybe.of(fn(this._val) ? this._val : null);
+    // eslint-disable-next-line fp-jxl/no-nil
+    return Maybe.of(fn(this._val) ? this._val : null);
   }
 
   toString() {
@@ -95,11 +99,14 @@ class Just extends Maybe {
 }
 
 class Nothing extends Maybe {
+  // eslint-disable-next-line fp-jxl/no-nil
   constructor() {
     super();
   }
 
+  // eslint-disable-next-line fp-jxl/no-nil
   get value() {
+    // eslint-disable-next-line fp-jxl/no-throw
     throw new TypeError("Can't extract the value of a Nothing");
   }
 

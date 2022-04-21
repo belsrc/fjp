@@ -1,4 +1,4 @@
-import curry from './../curry';
+import curry from '../curry';
 
 /**
  * Finds the first element that satisfies the given test func.

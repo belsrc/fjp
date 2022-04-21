@@ -1,6 +1,6 @@
-import curry from './../curry';
-import isArray from './../util/isArray';
-import clone from './../util/clone';
+import curry from '../curry';
+import isArray from '../util/isArray';
+import clone from '../util/clone';
 
 // unshift(0, [ 1, 2, 3, 4 ])
 // >> [ 0, 1, 2, 3, 4 ]

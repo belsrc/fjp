@@ -1,4 +1,5 @@
-import Maybe from './../Maybe';
+/* eslint-disable fp-jxl/no-this, fp-jxl/no-class, fp-jxl/no-mutation */
+import Maybe from '../Maybe';
 
 class Either {
   static of(x) {
@@ -22,8 +23,10 @@ class Either {
     return new Left(x);
   }
 
+  // eslint-disable-next-line fp-jxl/no-nil
   static try(fn) {
     try {
+      // eslint-disable-next-line callback-return
       const result = fn();
 
       return Either.of(result);
@@ -84,6 +87,7 @@ class Either {
 }
 
 class Right extends Either {
+  // eslint-disable-next-line fp-jxl/no-nil
   constructor(val) {
     super();
     this._val = val;
@@ -94,7 +98,8 @@ class Right extends Either {
   }
 
   filter(fn) {
-    Either.of(fn(this._val) ? this._val : null);
+    // eslint-disable-next-line fp-jxl/no-nil
+    return Either.of(fn(this._val) ? this._val : null);
   }
 
   orElse() {
@@ -111,6 +116,7 @@ class Right extends Either {
 }
 
 class Left extends Either {
+  // eslint-disable-next-line fp-jxl/no-nil
   constructor(val) {
     super();
     this._val = val;

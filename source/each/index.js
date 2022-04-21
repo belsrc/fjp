@@ -1,4 +1,4 @@
-import curry from './../curry';
+import curry from '../curry';
 
 /**
  * Applies the given func to each element in the array.

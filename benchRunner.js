@@ -1,4 +1,7 @@
-require('babel-core/register');
+/* eslint-disable fp-jxl/no-unused-expression, fp-jxl/no-nil */
+// eslint-ignore next-line fp-jxl/no-unused-expression
+require('@babel/register');
+
 const glob = require('glob');
 const Benchmark = require('benchmark');
 const Table = require('cli-table');
@@ -12,16 +15,26 @@ const green = str => `\x1b[92m${ str }\x1b[0m`;
 
 const getTable = name =>
   new Table({
-    head: [ name, 'Hertz', 'Count' ],
-    colWidths: [ 40, 20, 20 ],
+    head: [
+      name,
+      'Hertz',
+      'Count',
+    ],
+    colWidths: [
+      40,
+      20,
+      20,
+    ],
   });
 
-const prettyHz = hz =>
-  Benchmark.formatNumber(hz.toFixed(hz < 100 ? 2 : 0));
+const prettyHz = hz => Benchmark.formatNumber(hz.toFixed(hz < 100 ? 2 : 0));
 
 const prettyNum = num => `${ num.toLocaleString('en') }`;
 
-const benchNames = s => Object.keys(s).filter(x => !isNaN(x)).sort();
+const benchNames = s =>
+  Object.keys(s)
+    .filter(x => !isNaN(x))
+    .sort();
 
 const difference = (a, b) => (a - b) / a;
 
@@ -38,7 +51,11 @@ function runBenchmarks(files) {
     Object.keys(test.tests).forEach(k => {
       suite.add(k, test.tests[k], {
         onComplete(vo) {
-          table.push([ vo.target.name, prettyHz(vo.target.hz), prettyNum(vo.target.count) ]);
+          table.push([
+            vo.target.name,
+            prettyHz(vo.target.hz),
+            prettyNum(vo.target.count),
+          ]);
         },
       });
     });
@@ -46,15 +63,20 @@ function runBenchmarks(files) {
     suite
       .on('complete', () => {
         const benches = benchNames(suite).map(x => suite[x]);
-        const fastest = benches.reduce((acc, curr) =>
-          curr.count > (acc.count || 0) ? curr : acc, {});
+        const fastest = benches.reduce(
+          (acc, curr) => curr.count > (acc.count || 0) ? curr : acc,
+          {},
+        );
         const fjp = benches.filter(x => x.name.startsWith('fjp.'))[0];
         const diff = difference(fastest.count, fjp.count);
 
         if(diff > THRESHOLD) {
-          const msg = `Implemented is not within ${ THRESHOLD * 100 }% of fastest: [${ fastest.count }, ${ fjp.count }]`;
+          const msg = `Implemented is not within ${ THRESHOLD * 100 }% of fastest: [${
+            fastest.count
+          }, ${ fjp.count }]`;
 
           console.log(msg);
+
           // throw new RangeError(msg);
         }
 
@@ -66,4 +88,5 @@ function runBenchmarks(files) {
   });
 }
 
+// eslint-disable-next-line promise/prefer-await-to-callbacks
 glob(BENCHES, (error, files) => runBenchmarks(files));

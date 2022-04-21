@@ -1,4 +1,7 @@
+/* eslint-disable fp-jxl/no-let, fp-jxl/no-loops, fp-jxl/no-mutation */
+
 function clone(x) {
+  // eslint-disable-next-line fp-jxl/no-nil
   let i;
 
   if(!x || typeof x !== 'object') {
