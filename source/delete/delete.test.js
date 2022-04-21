@@ -1,5 +1,4 @@
-import 'babel-core/register';
-import test from 'ava';
+import '@babel/register';
 
 // import delete from './index';
 

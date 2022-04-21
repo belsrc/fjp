@@ -1,4 +1,4 @@
-import curry from './../../curry';
+import curry from '../../curry';
 
 /**
  * Given two functions that take the same value, returns the first if the result is truthy, otherwise, the second.

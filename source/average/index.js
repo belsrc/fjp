@@ -1,5 +1,5 @@
-import isArray from './../util/isArray';
-import sum from './../sum';
+import isArray from '../util/isArray';
+import sum from '../sum';
 
 /**
  * Averages the given array values
@@ -10,7 +10,6 @@ import sum from './../sum';
  * average(1, 2, 3); // 2
  * average(); // 0
  */
-const average = (...nums) =>
-  isArray(nums) && nums.length ? sum([...nums]) / [...nums].length : 0;
+const average = (...nums) => isArray(nums) && nums.length ? sum([...nums]) / [...nums].length : 0;
 
 export default average;

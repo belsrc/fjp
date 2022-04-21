@@ -1,4 +1,5 @@
-import curry from './../../curry';
+/* eslint-disable no-unused-vars */
+import curry from '../../curry';
 
 /**
  * Takes two values and returns the given first.

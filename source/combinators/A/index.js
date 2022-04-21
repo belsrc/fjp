@@ -1,4 +1,4 @@
-import curry from './../../curry';
+import curry from '../../curry';
 
 /**
  * Calls the given function with the given value.

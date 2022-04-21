@@ -1,4 +1,4 @@
-import 'babel-core/register';
+import '@babel/register';
 import isNumber from './index';
 
 const data = 43534;
@@ -7,10 +7,7 @@ module.exports = {
   name: 'isNumber',
   tests: {
     ['typeof + toString - lodash (true for NaN and INFINITY)']() {
-      return (
-        typeof data === 'number' ||
-        Object.prototype.toString.call(data) === '[object Number]'
-      );
+      return typeof data === 'number' || Object.prototype.toString.call(data) === '[object Number]';
     },
     ['prototype.toString - underscore (true for NaN and INFINITY)']() {
       return Object.prototype.toString.call(data) === '[object Number]';

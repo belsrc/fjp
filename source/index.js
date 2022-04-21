@@ -53,7 +53,6 @@ export { default as filter } from './filter';
 export { default as find } from './find';
 export { default as findIndex } from './findIndex';
 export { default as flatten } from './flatten';
-export { default as from } from './from';
 export { default as groupBy } from './groupBy';
 export { default as intersection } from './intersection';
 export { default as join } from './join';

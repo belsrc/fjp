@@ -8,4 +8,9 @@
 //
 // >> 15
 //
-export default (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+const pipe = (...fns) =>
+  fns.reduce((f, g) =>
+    (...args) =>
+      g(f(...args)));
+
+export default pipe;

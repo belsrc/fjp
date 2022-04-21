@@ -1,3 +1,4 @@
+/* eslint-disable promise/prefer-await-to-callbacks, fp-jxl/no-nil */
 const fs = require('fs');
 const glob = require('glob');
 const jsdoc2md = require('jsdoc-to-markdown');
@@ -41,7 +42,8 @@ const main = async () => {
   const license = await asyncRead('./doc/license.md');
   const readMe = `${ about }\n\n${ docs }\n\n${ license }`;
 
-  await asyncWrite('README.md', readMe);
+  return asyncWrite('README.md', readMe);
 };
 
+// eslint-disable-next-line fp-jxl/no-unused-expression
 main();

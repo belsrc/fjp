@@ -1,7 +1,9 @@
-import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import babili from 'rollup-plugin-babili';
-const pkg = require('./package.json');
+/* eslint-disable import/order */
+import { babel } from '@rollup/plugin-babel';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+
+const pkg = require('./package');
 
 const config = {
   input: 'source/index.js',
@@ -9,12 +11,14 @@ const config = {
     format: 'umd',
     exports: 'named',
     name: pkg.name,
+    sourcemap: true,
   },
-  plugins: [ resolve(), babel({ exclude: 'node_modules/**' }) ],
+  plugins: [ nodeResolve(), babel({ babelHelpers: 'external' }) ],
 };
 
 if(process.env.NODE_ENV === 'production') {
-  config.plugins.push(babili());
+  // eslint-disable-next-line fp-jxl/no-unused-expression
+  config.plugins.push(terser());
 }
 
 module.exports = config;

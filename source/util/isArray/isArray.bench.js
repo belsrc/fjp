@@ -1,4 +1,4 @@
-import 'babel-core/register';
+import '@babel/register';
 import isArray from './index';
 
 const data = [1, 2, 3, 4, 5];

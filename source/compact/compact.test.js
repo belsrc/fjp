@@ -1,24 +1,27 @@
-import 'babel-core/register';
-import test from 'ava';
+import '@babel/register';
 import compact from './index';
 
-test('returns empty array for null arg', t => {
-  const actual = compact();
+describe('compact', () => {
+  test('returns empty array for null arg', () => {
+    const actual = compact();
 
-  t.true(Array.isArray(actual) && actual.length === 0);
-});
+    expect(Array.isArray(actual)).toBeTruthy();
+    expect(actual).toHaveLength(0);
+  });
 
-test('returns array', t => {
-  const arr = [0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34];
-  const actual = compact(arr);
+  test('returns array', () => {
+    const arr = [0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34];
+    const actual = compact(arr);
 
-  t.true(Array.isArray(actual));
-});
+    expect(Array.isArray(actual)).toBeTruthy();
+  });
 
-test('returns correct value', t => {
-  const arr = [0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34];
-  const expected = [1, 2, 3, 'a', 's', 34];
-  const actual = compact(arr);
+  test('returns correct value', () => {
+    const arr = [0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34];
+    const expected = [1, 2, 3, 'a', 's', 34];
 
-  t.deepEqual(actual, expected);
+    const actual = compact(arr);
+
+    expect(actual).toEqual(expected);
+  });
 });
