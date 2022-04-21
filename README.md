@@ -12,6 +12,7 @@ These are some of the functions I collected/made along the way. They are all ES6
 
 ## This is very much a WIP
 
+
 ## Functions
 
 <dl>
@@ -80,6 +81,9 @@ you can optionally pass the number of arguments to the second parameter arity.</
 <dt><a href="#find">find()</a></dt>
 <dd><p>Finds the first element that satisfies the given test func.</p>
 </dd>
+<dt><a href="#trampoline">trampoline()</a></dt>
+<dd><p>In lieu of Proper Tail Calls, wraps the given function in a trampoline. This loops the given function until it returns a non-function value.</p>
+</dd>
 <dt><a href="#isArray">isArray()</a></dt>
 <dd><p>Determines if the given value is an array.</p>
 </dd>
@@ -106,37 +110,30 @@ you can optionally pass the number of arguments to the second parameter arity.</
 <a name="associate"></a>
 
 ## associate()
-
 Sets the given property and value on the object. Returning a new object.
 
 **Kind**: global function  
 **Signature**: associate :: String k -> {} -> v -> {k: v}  
-**Example**
-
+**Example**  
 ```js
-const obj = associate('c', { a: b }, d); // { a: b, c: d }
+const obj = associate('c', { a: b }, d)  // { a: b, c: d }
 ```
-
 <a name="average"></a>
 
 ## average()
-
 Averages the given array values
 
 **Kind**: global function  
 **Signature**: average :: [Number] -> Number  
-**Example**
-
+**Example**  
 ```js
-average([1, 2, 3]); // 2
+average([ 1, 2, 3 ]); // 2
 average(1, 2, 3); // 2
 average(); // 0
 ```
-
 <a name="A"></a>
 
 ## A()
-
 Calls the given function with the given value.
 
 **Kind**: global function  
@@ -145,7 +142,6 @@ Calls the given function with the given value.
 <a name="Fork"></a>
 
 ## Fork()
-
 Takes a joiner func, and two other funcs and a value. The value is given to both funcs and the
 results of each of these is given to the joiner func.
 
@@ -155,7 +151,6 @@ results of each of these is given to the joiner func.
 <a name="I"></a>
 
 ## I()
-
 Returns the given value.
 
 **Kind**: global function  
@@ -164,7 +159,6 @@ Returns the given value.
 <a name="K"></a>
 
 ## K()
-
 Takes two values and returns the given first.
 
 **Kind**: global function  
@@ -173,7 +167,6 @@ Takes two values and returns the given first.
 <a name="OR"></a>
 
 ## OR()
-
 Given two functions that take the same value, returns the first if the result is truthy, otherwise, the second.
 
 **Kind**: global function  
@@ -182,7 +175,6 @@ Given two functions that take the same value, returns the first if the result is
 <a name="T"></a>
 
 ## T()
-
 Calls the given function with the given value. (Reverse order of apply)
 
 **Kind**: global function  
@@ -191,69 +183,56 @@ Calls the given function with the given value. (Reverse order of apply)
 <a name="compact"></a>
 
 ## compact()
-
 Removes falsey values from an array.
 
 **Kind**: global function  
 **Signature**: compact :: [a] -> [a]  
-**Example**
-
+**Example**  
 ```js
-compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a', 's', 34 ]
-compact(null); // []
+compact([ 0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34 ]); // [ 1, 2, 3, 'a', 's', 34 ]
+compact(null) // []
 ```
-
 <a name="compose"></a>
 
 ## compose()
-
 Performs right-to-left function composition.
 
 **Kind**: global function  
 **Signature**: compose :: [(m -> n), ..., (b -> c), (a -> b)] -> a -> n  
-**Example**
-
+**Example**  
 ```js
-const addOne = (x) => x + 1;
-const timeTen = (x) => x * 10;
+const addOne = x => x + 1;
+const timeTen = x => x * 10;
 const addOneTimeTen = compose(timeTen, addOne);
 const result = addOneTimeTen(9); // 100
 ```
-
 <a name="concat"></a>
 
 ## concat()
-
 Concatenates two String|Arrays together.
 Returns empty array if value arent of the same type or not String|Array.
 
 **Kind**: global function  
 **Signature**: concat :: a -> b -> c  
-**Example**
-
+**Example**  
 ```js
-concat('foo', 'bar'); // foobar
-concat([1, 2], [3, 4]); // [1, 2, 3, 4]
+concat('foo', 'bar') // foobar
+concat([1, 2], [3, 4]) // [1, 2, 3, 4]
 ```
-
 <a name="concatN"></a>
 
 ## concatN()
-
 Concatenates N Arrays together.
 
 **Kind**: global function  
 **Signature**: concat :: [a] -> [b] -> ...[n] -> [m]  
-**Example**
-
+**Example**  
 ```js
-concatN([1, 2], [3, 4], [5, 6]); // [1, 2, 3, 4, 5, 6]
+concatN([1, 2], [3, 4], [5, 6]) // [1, 2, 3, 4, 5, 6]
 ```
-
 <a name="curry"></a>
 
 ## curry()
-
 Wraps the given function, if the number of provided args is sufficient, call the passed function fn.
 Otherwise, return a wrapped function fn that expects the rest of the arguments.
 If you want to curry a function that accepts a variable number of arguments (a variadic function),
@@ -261,223 +240,195 @@ you can optionally pass the number of arguments to the second parameter arity.
 
 **Kind**: global function  
 **Signature**: curry :: ((a, b, ..., n) -> m) -> a -> b -> ...n -> m  
-**Example**
-
+**Example**  
 ```js
 const add = curry((x, y) => x + y);
 const addFiveTo = add(5);
 addFiveTo(10); // 15
 ```
-
 <a name="difference"></a>
 
 ## difference()
-
 Returns the difference between two arrays.
 
 **Kind**: global function  
 **Signature**: difference :: [a] -> [b] -> [c]  
-**Example**
-
+**Example**  
 ```js
-difference([1, 2, 3], [1, 2, 4]); // [3]
-difference([], [1, 2, 4]); // [ 1, 2, 4 ]
-difference([1, 2, 3], []); // [ 1, 2, 3 ]
-difference([1, 2, 3], null); // [ 1, 2, 3 ]
+difference([ 1, 2, 3 ], [ 1, 2, 4 ]) // [3]
+difference([], [ 1, 2, 4 ]) // [ 1, 2, 4 ]
+difference([ 1, 2, 3 ], []) // [ 1, 2, 3 ]
+difference([ 1, 2, 3 ], null) // [ 1, 2, 3 ]
 ```
-
 <a name="distinct"></a>
 
 ## distinct()
-
 Returns all of the distinct values of an array.
 
 **Kind**: global function  
 **Signature**: distinct :: [a] -> [b]  
-**Example**
-
+**Example**  
 ```js
-distinct([1, 2, 2, 3, 4, 4, 5]); // [ 1, 2, 3, 4, 5 ]
+distinct([ 1, 2, 2, 3, 4, 4, 5 ]) // [ 1, 2, 3, 4, 5 ]
 ```
-
 <a name="distinctN"></a>
 
 ## distinctN()
-
 Returns all of the distinct values of the given arrays.
 
 **Kind**: global function  
 **Signature**: distinctN :: [a] -> [b] -> ...[n] -> [m]  
-**Example**
-
+**Example**  
 ```js
-distinctN([1, 2], [2, 3, 4], [4, 5]); // [ 1, 2, 3, 4, 5 ]
+distinctN([ 1, 2 ], [ 2, 3, 4 ], [ 4, 5 ]) // [ 1, 2, 3, 4, 5 ]
 ```
-
 <a name="each"></a>
 
 ## each()
-
 Applies the given func to each element in the array.
 
 **Kind**: global function  
 **Signature**: each :: (a -> b) -> [c] -> undefined  
-**Example**
-
+**Example**  
 ```js
-difference(log, [1, 2, 3]);
+difference(log, [1, 2, 3])
 ```
-
 <a name="every"></a>
 
 ## every()
-
 Determines if all element in an array satisfy the given test function
 
 **Kind**: global function  
 **Signature**: every :: (a -> Bool) -> [a] -> Bool  
 **Aka**: all  
-**Example**
-
+**Example**  
 ```js
-every(Boolean, [1, 2, 3, 4]); // true
-every(Boolean, [1, 2, null, 4]); // false
+every(Boolean, [1, 2, 3, 4]) // true
+every(Boolean, [1, 2, null, 4]) // false
 ```
-
 <a name="filter"></a>
 
 ## filter()
-
 Filters the array using the given function.
 
 **Kind**: global function  
 **Signature**: filter :: (a -> Boolean) -> [a] -> [a]  
-**Example**
-
+**Example**  
 ```js
-filter((x) => x > 5, [1, 2, 3, 5, 6, 7]); // [6, 7]
+filter(x => x > 5, [1, 2, 3, 5, 6, 7]) // [6, 7]
 ```
-
 <a name="find"></a>
 
 ## find()
-
 Finds the first element that satisfies the given test func.
 
 **Kind**: global function  
 **Signature**: find :: (a -> Boolean) -> [a] -> a  
-**Example**
-
+**Example**  
 ```js
-find((x) => x.score === 5, [{ score: 1 }, { score: 2 }, { score: 5 }, { score: 6 }, { score: 7 }]); // {score: 5}
+find(x => x.score === 5, [{score: 1}, {score: 2}, {score: 5}, {score: 6}, {score: 7}]) // {score: 5}
 ```
+<a name="trampoline"></a>
 
+## trampoline()
+In lieu of Proper Tail Calls, wraps the given function in a trampoline. This loops the given function until it returns a non-function value.
+
+**Kind**: global function  
+**Signature**: trampoline :: (a -> b) -> a -> b  
+**Example**  
+```js
+const sumBelow = (number, sum = 0) => number === 0  ? sum : () => sumBelow(number - 1, sum + number);
+const sumDown = trampoline(sumBelow);
+sumDown(100000);
+// > 5000050000
+```
 <a name="isArray"></a>
 
 ## isArray()
-
 Determines if the given value is an array.
 
 **Kind**: global function  
 **Signature**: isArray :: a -> Boolean  
-**Example**
-
+**Example**  
 ```js
-isArray([1, 2, 3]); // true
-isArray({ a: 'b' }); // false
+isArray([1, 2, 3])  // true
+isArray({ a: 'b' })  // false
 ```
-
 <a name="isFunction"></a>
 
 ## isFunction()
-
 Determines if the given value is a function.
 
 **Kind**: global function  
 **Signature**: isFunction :: a -> Boolean  
-**Example**
-
+**Example**  
 ```js
-isFunction(() => {}); // true
-isFunction([1, 2, 3]); // false
+isFunction(() => {})  // true
+isFunction([1, 2, 3])  // false
 ```
-
 <a name="isNumber"></a>
 
 ## isNumber()
-
 Determines if the given value is a number.
 
 **Kind**: global function  
 **Signature**: isNumber :: a -> Boolean  
-**Example**
-
+**Example**  
 ```js
-isNumber(42); // true
-isNumber(8e5); // true
-isNumber(0x2f); // true
-isNumber('foo bar'); // false
+isNumber(42)  // true
+isNumber(8e5)  // true
+isNumber(0x2F)  // true
+isNumber('foo bar')  // false
 ```
-
 <a name="isObject"></a>
 
 ## isObject()
-
 Determines if the given value is an object.
 
 **Kind**: global function  
 **Signature**: isObject :: a -> Boolean  
-**Example**
-
+**Example**  
 ```js
-isObject({ a: 'b' }); // true
-isObject([1, 2, 3]); // false
+isObject({ a: 'b' })  // true
+isObject([1, 2, 3])  // false
 ```
-
 <a name="isString"></a>
 
 ## isString()
-
 Determines if the given value is a string.
 
 **Kind**: global function  
 **Signature**: isString :: a -> Boolean  
-**Example**
-
+**Example**  
 ```js
-isString('foo bar'); // true
-isString({ a: 'b' }); // false
+isString('foo bar')  // true
+isString({ a: 'b' })  // false
 ```
-
 <a name="not"></a>
 
 ## not()
-
 Negates the given boolean-like value.
 
 **Kind**: global function  
 **Signature**: not :: Boolean -> Boolean  
-**Example**
-
+**Example**  
 ```js
 not(true); // false
 not(false); // true
 not(2); // false
 ```
-
 <a name="tap"></a>
 
 ## tap()
-
 Calls the given function with the given value and returns the value.
 
 **Kind**: global function  
 **Signature**: tap :: (a -> b) -> a -> a  
-**Example**
-
+**Example**  
 ```js
-tap(console.log, 'foobar'); // foobar
+tap(console.log, 'foobar') // foobar
 ```
+
 
 ## License
 

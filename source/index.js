@@ -40,6 +40,7 @@ export { default as compose } from './compose';
 export { default as concat } from './concat';
 export { default as concatN } from './concatN';
 export { default as curry } from './curry';
+export { default as trampoline } from './trampoline';
 
 // export { default as delete } from './delete';
 export { default as deviation } from './deviation';
