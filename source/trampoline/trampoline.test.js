@@ -1,32 +1,31 @@
-import 'babel-core/register';
-import test from 'ava';
+import '@babel/register';
 import trampoline from './index';
 
 const recSumBelow = (number, sum = 0) =>
-  number === 0 ? sum : sumBelow(number - 1, sum + number);
+  number === 0 ? sum : recSumBelow(number - 1, sum + number);
 
 const tramSumBelow = (number, sum = 0) =>
-  number === 0  ? sum : () => sumBelow(number - 1, sum + number);
+  number === 0  ? sum : () => tramSumBelow(number - 1, sum + number);
 
 const value = 100000;
 
 
-test('normal recursion should fail', t => {
-  t.throws(() => {
-		recSumBelow(value);
-	}, { instanceOf: TypeError });
+test('normal recursion should fail', () => {
+  expect(() => {
+    recSumBelow(value);
+  }).toThrow();
 });
 
-test('trampoline should not fail', t => {
-  t.notThrows(() => {
-		trampoline(tramSumBelow)(value);
-	}, { instanceOf: TypeError });
+test('trampoline should not fail', () => {
+  expect(() => {
+    trampoline(tramSumBelow)(value);
+  }).not.toThrow();
 });
 
-test('trampoline should return expected', t => {
+test('trampoline should return expected', () => {
   const expected = 5000050000;
 
-  const actual = recSumBelow(value);
+  const actual = trampoline(tramSumBelow)(value);
 
-  t.is(actual, expected);
+  expect(actual).toBe(expected);
 });

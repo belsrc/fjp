@@ -1,3 +1,5 @@
+/* eslint-disable fp-jxl/no-let, fp-jxl/no-loops, fp-jxl/no-mutation */
+
 /**
  * In lieu of Proper Tail Calls, wraps the given function in a trampoline. This loops the given function until it returns a non-function value.
  * @signature trampoline :: (a -> b) -> a -> b
@@ -9,6 +11,7 @@
  * // > 5000050000
  */
 const trampoline = fn => (...args) => {
+  // eslint-disable-next-line callback-return
   let result = fn(...args);
 
   while(typeof result === 'function') {
@@ -16,6 +19,6 @@ const trampoline = fn => (...args) => {
   }
 
   return result;
-}
+};
 
 export default trampoline;
