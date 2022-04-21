@@ -11,8 +11,9 @@ const config = {
     format: 'umd',
     exports: 'named',
     name: pkg.name,
+    sourcemap: true,
   },
-  plugins: [ nodeResolve(), babel({ babelHelpers: 'bundled', exclude: 'node_modules/**' }) ],
+  plugins: [ nodeResolve(), babel({ babelHelpers: 'external' }) ],
 };
 
 if(process.env.NODE_ENV === 'production') {
