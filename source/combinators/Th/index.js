@@ -2,10 +2,12 @@ import curry from './../../curry';
 
 /**
  * Calls the given function with the given value. (Reverse order of apply)
- * @signature T :: a -> (a -> b) -> b
+ * @signature Th :: a -> (a -> b) -> b
  * @func
  * @aka thrush, applyTo
+ * @lamda λaf.fa
+ * @bird Thrush
  */
-const T = curry((x, f) => f(x));
+const Th = curry((x, f) => f(x));
 
-export default T;
+export default Th;

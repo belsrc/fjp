@@ -22,3 +22,22 @@ function select(arr, obj) {
 }
 
 export default curry(select);
+
+// TODO: This can just be an alias for the new path
+/*
+const path = curry((props, obj) => {
+  if(!isArray(props) && !isString(props)) {
+    return;
+  }
+
+  const [
+    head,
+    ...tail
+  ] = Array.isArray(props) ? props : props.split('.');
+
+  return tail.length && obj[head] != null ?
+    path(tail, obj[head]):
+    obj[head] != null ? obj[head] : undefined;
+});
+
+*/

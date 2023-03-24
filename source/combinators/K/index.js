@@ -5,6 +5,8 @@ import curry from './../../curry';
  * @signature K :: a -> b -> a
  * @func
  * @aka constant
+ * @lambda λab.a
+ * @bird Kestrel
  */
 const K = curry((x, y) => x);
 

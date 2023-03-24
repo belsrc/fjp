@@ -6,5 +6,4 @@
 // delay(2000).then(() => console.log('Hi!'));
 //
 export default func => (...args) =>
-  new Promise((resolve, reject) =>
-    func(...args, (err, result) => err ? reject(err) : resolve(result)));
+  new Promise((resolve, reject) => func(...args, (err, result) => err ? reject(err) : resolve(result)));

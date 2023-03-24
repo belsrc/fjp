@@ -15,5 +15,5 @@ import clone from './../util/clone';
 // pop();
 // >> []
 //
-export default arr =>
-  !isArray(arr) || !arr.length ? [] : clone(arr).slice(0, arr.length - 1);
+
+export default arr => !isArray(arr) || !arr.length ? [] : clone(arr).slice(0, arr.length - 1);

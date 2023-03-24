@@ -5,7 +5,6 @@ import curry from './../../curry';
  * results of each of these is given to the joiner func.
  * @signature Fork :: (b -> c -> d) -> (a -> b) -> (a -> c) -> a -> d
  * @func
- * @aka join
  */
 const Fork = curry((joiner, fnA, fnB, x) => joiner(fnA(x), fnB(x)));
 

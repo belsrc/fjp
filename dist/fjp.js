@@ -164,6 +164,10 @@ var isString = function isString(value) {
   return value != null && value.constructor === String;
 };
 
+var isNumber = function isNumber(n) {
+  return typeof n === 'number' && !isNaN(n) && isFinite(n);
+};
+
 var not = function not(x) {
   return !x;
 };
@@ -634,6 +638,7 @@ exports.isArray = isArray;
 exports.isFunction = isFunction;
 exports.isObject = isObject;
 exports.isString = isString;
+exports.isNumber = isNumber;
 exports.not = not;
 exports.tap = tap;
 exports.A = A;
